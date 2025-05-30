@@ -1,0 +1,60 @@
+{
+  "name": "denim",
+  "version": "0.0.1",
+  "description": "This application enables to reverse engineer, visualize, model, and evolve a microservices architecture from a data perspective.",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "start": "vite preview",
+    "start_dev": "vite",
+    "test_unit": "npx vitest --run --coverage",
+    "test_unit_dev": "npx vitest",
+    "test_integration_ui": "start-server-and-test start http://localhost:4173 'cypress run --e2e --headed'",
+    "test_integration_ui_dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
+    "test_unit_ui": "cypress run --component --headed",
+    "test_unit_ui_dev": "cypress open --component",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.unamur.be/denim/web"
+  },
+  "keywords": [
+    "microservice",
+    "reverse engineering",
+    "modeling",
+    "visualization",
+    "evolution",
+    "data"
+  ],
+  "author": "Maxime ANDRÉ",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "pinia": "^2.2.4",
+    "vue": "^3.4.29",
+    "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitest/coverage-v8": "^2.1.2",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/test-utils": "^2.4.0-alpha.2",
+    "cypress": "^13.12.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-cypress": "^3.3.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "install": "^0.13.0",
+    "npm": "^10.9.0",
+    "prettier": "^3.2.5",
+    "start-server-and-test": "^2.0.4",
+    "vite": "^5.3.1",
+    "vite-plugin-vue-devtools": "^7.3.1",
+    "vite-tsconfig-paths": "^5.0.1",
+    "vitest": "^2.1.2"
+  }
+}

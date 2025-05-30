@@ -1,0 +1,42 @@
+// Layout
+
+export const MARGIN = 7.5
+export const SIZE = 20
+
+// Images
+
+export const SVG_NS = 'http://www.w3.org/2000/svg'
+
+export const IMAGES = {
+  CREATE:
+    '<svg width="96" height="96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><g transform="translate(-199 -139)"><path d="M287 181 253 181 253 147 241 147 241 181 207 181 207 193 241 193 241 227 253 227 253 193 287 193Z"/></g></svg>',
+  READ: '<svg width="96" height="96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><g transform="translate(-344 -139)"><path d="M405.9 201.4C413.7 193.9 414.1 181.5 406.7 173.5 414.6 177.6 421.1 183.9 424.9 188.1 420.9 192 414.1 197.8 405.9 201.4ZM366.6 180.8C369.9 178 373.4 175.6 377.2 173.6 369.9 181.6 370.3 193.9 378.1 201.4 369.9 197.8 363 192 359.1 188.1 361.4 185.5 363.9 183.1 366.6 180.8L366.6 180.8ZM392 203C383.2 203 376 195.8 376 187 376 178.2 383.2 171 392 171 400.8 171 408 178.2 408 187 408 195.8 400.8 203 392 203ZM430.9 185.3C425.1 178.5 409.9 163 392 163 374.1 163 358.9 178.5 353.1 185.3 351.6 187.1 351.7 189.6 353.3 191.3 359.2 197.5 374.3 211 392 211 409.7 211 424.8 197.5 430.8 191.3 432.3 189.7 432.4 187.1 430.9 185.3Z"/><path d="M402 187C402 192.523 397.523 197 392 197 386.477 197 382 192.523 382 187 382 181.477 386.477 177 392 177 397.523 177 402 181.477 402 187Z"/></g></svg>',
+  UPDATE:
+    '<svg width="96" height="96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><g transform="translate(-640 -139)"><path d="M660.9 196.6 680.1 177.4 669.4 177.4C672.9 170.6 680 165.9 688.2 165.9 693.5 165.9 698.4 167.9 702.1 171.2L721.6 171.2C715.7 158.6 702.9 150 688.2 150 671.1 150 656.7 161.6 652.5 177.4L641.7 177.4 660.9 196.6Z"/><path d="M734.6 196.6 715.4 177.4 696.2 196.6 707 196.6C703.5 203.4 696.4 208.1 688.2 208.1 682.9 208.1 678 206.1 674.3 202.8L654.7 202.8C660.7 215.4 673.4 224 688.2 224 705.3 224 719.7 212.4 723.9 196.6L734.6 196.6Z"/></g></svg>',
+  DELETE:
+    '<svg width="96" height="96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><g transform="translate(-592 -312)"><path d="M670 332 653 332 653 327C653 323.1 649.9 320 646 320L634 320C630.1 320 627 323.1 627 327L627 332 610 332C607.8 332 606 333.8 606 336L606 340 674 340 674 336C674 333.8 672.2 332 670 332ZM633 327C633 326.4 633.4 326 634 326L646 326C646.6 326 647 326.4 647 327L647 332 633 332 633 327Z"/><path d="M612 396C612 398.2 613.8 400 616 400L664 400C666.2 400 668 398.2 668 396L668 344 612 344 612 396ZM653 350 659 350 659 394 653 394 653 350ZM637 350 643 350 643 394 637 394 637 350ZM621 350 627 350 627 394 621 394 621 350Z"/></g></svg>',
+  OTHER:
+    '<svg width="96" height="96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><g transform="translate(-592 -312)"><path d="M615 360.5C615 365.194 611.194 369 606.5 369 601.806 369 598 365.194 598 360.5 598 355.806 601.806 352 606.5 352 611.194 352 615 355.806 615 360.5Z"/><path d="M648 360.5C648 365.194 644.194 369 639.5 369 634.806 369 631 365.194 631 360.5 631 355.806 634.806 352 639.5 352 644.194 352 648 355.806 648 360.5Z"/><path d="M681 360.5C681 365.194 677.194 369 672.5 369 667.806 369 664 365.194 664 360.5 664 355.806 667.806 352 672.5 352 677.194 352 681 355.806 681 360.5Z"/></g></svg>'
+}
+
+export const IMAGE_SHIFT = 2.5
+export const IMAGE_SCALE = '0.16'
+export const OPAQUE = '0.05'
+export const NO_OPAQUE = '1'
+export const ZOOM_FACTOR = 0.1
+export const MIN_ZOOM = 0.1
+export const MAX_ZOOM = 2.0
+
+// Colors
+
+export const DEFAULT_COLOR = '#FFFFFF'
+export const DEFAULT_COLOR_TREEMAP = '#000000'
+export const DEFAULT_OPACITY_TREEMAP = '0.05'
+export const DEFAULT_COLOR_REPOSITORY = '#000000'
+export const DEFAULT_OPACITY_REPOSITORY = '0.05'
+export const DEFAULT_COLOR_DIRECTORY = '#000000'
+export const DEFAULT_OPACITY_DIRECTORY = '0.05'
+export const DEFAULT_COLOR_FILE = '#FFFFFF'
+export const DEFAULT_OPACITY_FILE = '0.25'
+export const DEFAULT_COLOR_CODE_FRAGMENT = '#FFFFFF'
+export const DEFAULT_OPACITY_CODE_FRAGMENT = '1'

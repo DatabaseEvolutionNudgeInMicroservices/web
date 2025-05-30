@@ -1,0 +1,12 @@
+/* Layout */
+
+.top {
+  margin-top: 25px;
+}
+
+.line {
+  height: 1px;
+  border: 0;
+  background-color: #dee2e6 !important;
+  opacity: 1 !important;
+}
