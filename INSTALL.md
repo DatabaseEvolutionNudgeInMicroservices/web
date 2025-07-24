@@ -20,8 +20,14 @@ You have the tree following options.
 
 #### Launching from Docker Hub (preferred)
 
-- TODO: link to Docker Hub
-- TODO: environment variable description
+- [Docker Hub repository](https://hub.docker.com/r/maxiandr/denim-web)
+- Environment variables:
+  ```
+  VITE_DOWNLOAD_MICROSERVICE=http://localhost:8081
+  VITE_REVERSE_ENGINEERING_MICROSERVICE=http://localhost:8082
+  VITE_VISUALIZATION_MICROSERVICE=http://localhost:8083
+  VITE_EVOLUTION_MICROSERVICE=http://localhost:8084
+  ```
 
 #### Launching from source code
 
