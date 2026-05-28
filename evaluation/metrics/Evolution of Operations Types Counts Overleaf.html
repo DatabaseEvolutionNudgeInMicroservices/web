@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolution of Operations Types Counts in Overleaf</title>
+
+  <script src="https://cdn.plot.ly/plotly-3.5.1.min.js"></script>
+</head>
+
+<body>
+<div id="chart"></div>
+
+<script>
+  const dates = ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026']
+
+  const operationColors = {
+    CREATE: '#2ecc71',
+    READ: '#29b6f6',
+    UPDATE: '#ffa726',
+    DELETE: '#ef5350',
+    OTHER: '#616161'
+  }
+
+  function createTrace(group, operation, values) {
+    return {
+      x: dates,
+      y: values,
+
+      name: `${operation}`,
+
+      type: 'bar',
+
+      offsetgroup: group,
+      legendgroup: operation,
+
+      marker: {
+        color: operationColors[operation],
+        line: {
+          color: '#fff',
+          width: 1
+        }
+      }
+    }
+  }
+
+  const data = [
+    createTrace('All', 'OTHER', [61, 61, 59, 69, 69, 59, 69, 69, 72, 72]),
+    createTrace('All', 'CREATE', [405, 403, 446, 497, 485, 471, 482, 534, 576, 605]),
+    createTrace('All', 'READ', [659, 721, 765, 933, 938, 902, 956, 1070, 1237, 1290]),
+    createTrace('All', 'UPDATE', [154, 169, 199, 250, 283, 320, 319, 359, 402, 423]),
+    createTrace('All', 'DELETE', [119, 122, 127, 164, 174, 179, 186, 191, 200, 202])
+  ]
+
+  const layout = {
+
+    width: 500,
+    height: 500,
+    margin: {
+      b: 150
+    },
+
+    title: 'Evolution of Operations Types Counts in Overleaf',
+
+    barmode: 'stack',
+
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff',
+
+    xaxis: {
+      title: { text: '' },
+      gridcolor: '#e0e0e0'
+    },
+
+    yaxis: {
+      title: { text: '# Operations' },
+      gridcolor: '#e0e0e0'
+    },
+
+    legend: {
+      orientation: 'v'
+    },
+
+    showlegend: true,
+
+    font: {
+      family: 'Arial, sans-serif',
+      size: 14,
+      color: '#212121'
+    }
+  }
+
+  Plotly.newPlot('chart', data, layout)
+</script>
+</body>
+</html>

@@ -20,14 +20,7 @@ You have the tree following options.
 
 #### Launching from Docker Hub (preferred)
 
-- [Docker Hub repository](https://hub.docker.com/r/maxiandr/denim-web)
-- Environment variables:
-  ```
-  VITE_DOWNLOAD_MICROSERVICE=http://localhost:8081
-  VITE_REVERSE_ENGINEERING_MICROSERVICE=http://localhost:8082
-  VITE_VISUALIZATION_MICROSERVICE=http://localhost:8083
-  VITE_EVOLUTION_MICROSERVICE=http://localhost:8084
-  ```
+- [Docker Hub repository](https://hub.docker.com/r/denimraindrop/denim-web)
 
 #### Launching from source code
 
@@ -43,8 +36,8 @@ You have the tree following options.
   # Windows
   VITE_DOWNLOAD_MICROSERVICE=http://localhost:8081
   VITE_REVERSE_ENGINEERING_MICROSERVICE=http://localhost:8082
-  VITE_VISUALIZATION_MICROSERVICE=http://localhost:8083
-  VITE_EVOLUTION_MICROSERVICE=http://localhost:8084
+  VITE_VISUALIZING_MICROSERVICE=http://localhost:8083
+  VITE_EVOLVING_MICROSERVICE=http://localhost:8084
   ```
 
 ⚠️ All environment variables must be prefixed by `VITE`.

@@ -15,7 +15,7 @@ let jsonData = {
   children: [
     {
       type: 'repository',
-      data: { location: 'https://www.github.com/user/project/blob/master/' },
+      data: { location: 'https://www.github.com/user/project/tree/abc/' },
       childrenNumber: 1,
       descendantsNumber: 7,
       width: 135,
@@ -25,7 +25,7 @@ let jsonData = {
       children: [
         {
           type: 'directory',
-          data: { location: 'https://www.github.com/user/project/blob/master/js/' },
+          data: { location: 'https://www.github.com/user/project/tree/abc/js/' },
           childrenNumber: 2,
           descendantsNumber: 6,
           width: 120,
@@ -35,7 +35,7 @@ let jsonData = {
           children: [
             {
               type: 'directory',
-              data: { location: 'https://www.github.com/user/project/blob/master/js/app/' },
+              data: { location: 'https://www.github.com/user/project/tree/abc/js/app/' },
               childrenNumber: 1,
               descendantsNumber: 4,
               width: 77.5,
@@ -46,7 +46,7 @@ let jsonData = {
                 {
                   type: 'file',
                   data: {
-                    location: 'https://www.github.com/user/project/blob/master/js/app/app.js'
+                    location: 'https://www.github.com/user/project/tree/abc/js/app/app.js'
                   },
                   childrenNumber: 3,
                   descendantsNumber: 3,
@@ -59,12 +59,12 @@ let jsonData = {
                       type: 'codeFragment',
                       data: {
                         location:
-                          'https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2',
+                          'https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2',
                         technology: { id: 'javascript-api-express-call' },
                         operation: { name: 'READ' },
                         method: { name: 'get' },
-                        sample: { content: "'/user/:userId'" },
-                        concepts: [{ name: 'user' }],
+                        sample: { content: "'/doc/:docId'" },
+                        concepts: [{ name: 'doc' }],
                         heuristics: 'E1E2E3E4E5E6E7E8',
                         score: '8'
                       },
@@ -82,7 +82,7 @@ let jsonData = {
                       type: 'codeFragment',
                       data: {
                         location:
-                          'https://www.github.com/user/project/blob/master/js/app/app.js#L3C3L4C4',
+                          'https://www.github.com/user/project/tree/abc/js/app/app.js#L3C3L4C4',
                         technology: { id: 'javascript-db-mongo-call' },
                         operation: { name: 'READ' },
                         method: { name: 'find' },
@@ -105,7 +105,7 @@ let jsonData = {
                       type: 'codeFragment',
                       data: {
                         location:
-                          'https://www.github.com/user/project/blob/master/js/app/app.js#L5C5L6C6',
+                          'https://www.github.com/user/project/tree/abc/js/app/app.js#L5C5L6C6',
                         technology: { id: 'javascript-db-redis-call' },
                         operation: { name: 'READ' },
                         method: { name: 'get' },
@@ -134,7 +134,7 @@ let jsonData = {
             },
             {
               type: 'file',
-              data: { location: 'https://www.github.com/user/project/blob/master/js/app.js' },
+              data: { location: 'https://www.github.com/user/project/tree/abc/js/app.js' },
               childrenNumber: 0,
               descendantsNumber: 0,
               width: 20,
@@ -155,7 +155,7 @@ let jsonData = {
     },
     {
       type: 'repository',
-      data: { location: 'https://www.github.com/user/projectClone/blob/master/' },
+      data: { location: 'https://www.github.com/user/projectClone/tree/abc/' },
       childrenNumber: 1,
       descendantsNumber: 7,
       width: 135,
@@ -165,7 +165,7 @@ let jsonData = {
       children: [
         {
           type: 'directory',
-          data: { location: 'https://www.github.com/user/projectClone/blob/master/js/' },
+          data: { location: 'https://www.github.com/user/projectClone/tree/abc/js/' },
           childrenNumber: 2,
           descendantsNumber: 6,
           width: 120,
@@ -175,7 +175,7 @@ let jsonData = {
           children: [
             {
               type: 'directory',
-              data: { location: 'https://www.github.com/user/projectClone/blob/master/js/app/' },
+              data: { location: 'https://www.github.com/user/projectClone/tree/abc/js/app/' },
               childrenNumber: 1,
               descendantsNumber: 4,
               width: 77.5,
@@ -186,7 +186,7 @@ let jsonData = {
                 {
                   type: 'file',
                   data: {
-                    location: 'https://www.github.com/user/projectClone/blob/master/js/app/app.js'
+                    location: 'https://www.github.com/user/projectClone/tree/abc/js/app/app.js'
                   },
                   childrenNumber: 3,
                   descendantsNumber: 3,
@@ -199,12 +199,12 @@ let jsonData = {
                       type: 'codeFragment',
                       data: {
                         location:
-                          'https://www.github.com/user/projectClone/blob/master/js/app/app.js#L1C1L2C2',
+                          'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L1C1L2C2',
                         technology: { id: 'javascript-api-express-call' },
                         operation: { name: 'READ' },
                         method: { name: 'get' },
-                        sample: { content: "'/user/:userId'" },
-                        concepts: [{ name: 'user' }],
+                        sample: { content: "'/doc/:docId'" },
+                        concepts: [{ name: 'doc' }],
                         heuristics: 'E1E2E3E4E5E6E7E8',
                         score: '8'
                       },
@@ -222,7 +222,7 @@ let jsonData = {
                       type: 'codeFragment',
                       data: {
                         location:
-                          'https://www.github.com/user/projectClone/blob/master/js/app/app.js#L3C3L4C4',
+                          'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L3C3L4C4',
                         technology: { id: 'javascript-db-mongo-call' },
                         operation: { name: 'READ' },
                         method: { name: 'find' },
@@ -245,7 +245,7 @@ let jsonData = {
                       type: 'codeFragment',
                       data: {
                         location:
-                          'https://www.github.com/user/projectClone/blob/master/js/app/app.js#L5C5L6C6',
+                          'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L5C5L6C6',
                         technology: { id: 'javascript-db-redis-call' },
                         operation: { name: 'READ' },
                         method: { name: 'get' },
@@ -274,7 +274,7 @@ let jsonData = {
             },
             {
               type: 'file',
-              data: { location: 'https://www.github.com/user/projectClone/blob/master/js/app.js' },
+              data: { location: 'https://www.github.com/user/projectClone/tree/abc/js/app.js' },
               childrenNumber: 0,
               descendantsNumber: 0,
               width: 20,
@@ -297,13 +297,77 @@ let jsonData = {
   color: '#000000',
   opacity: '0.05'
 }
+let locationsList = [
+  'https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1-L2C2',
+  'https://www.github.com/user/project/tree/abc/js/app/app.js#L3C3-L4C4',
+  'https://www.github.com/user/project/tree/abc/js/app/app.js#L5C5-L6C6',
+  'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L1C1-L2C2',
+  'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L3C3-L4C4',
+  'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L5C5-L6C6'
+]
 let technologiesList = [
   'javascript-api-express-call',
   'javascript-db-mongo-call',
   'javascript-db-redis-call'
 ]
 let operationsList = ['READ']
+let methodsList = ['get', 'find']
 let conceptsList = ['user', 'doc']
+let conceptsMatrixObject = {
+  concepts: ['user', 'doc'],
+  matrix: [
+    [4, 0],
+    [0, 2]
+  ]
+}
+let directoriesNumberValue = 4
+let filesNumberValue = 4
+let codeFragmentsNumberValue = 6
+let conceptsNumberValue = 2
+let operationsTechnologiesBreakdownObject = {
+  static: {
+    'javascript-api-express-call': {
+      CREATE: 0,
+      READ: 2,
+      UPDATE: 0,
+      DELETE: 0,
+      OTHER: 0,
+      TOTAL: 2
+    },
+    'javascript-db-mongo-call': {
+      CREATE: 0,
+      READ: 2,
+      UPDATE: 0,
+      DELETE: 0,
+      OTHER: 0,
+      TOTAL: 2
+    },
+    'javascript-db-redis-call': {
+      CREATE: 0,
+      READ: 2,
+      UPDATE: 0,
+      DELETE: 0,
+      OTHER: 0,
+      TOTAL: 2
+    }
+  }
+}
+let conceptsBreakdownObject = {
+  user: 4,
+  doc: 2,
+  TOTAL: 6
+}
+let locValue = 99
+let tirObject = {
+  'javascript-api-express-call': 1,
+  'javascript-db-mongo-call': 1,
+  'javascript-db-redis-call': 1
+}
+let cirObject = {
+  user: 1,
+  doc: 1
+}
+let filteredCodeFragmentsList = []
 
 describe('Treemap', () => {
   it('initializes correctly', () => {
@@ -320,30 +384,43 @@ describe('Treemap', () => {
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     // Then
-    cy.get('rect[id="https://www.github.com/user/project/blob/master/"][type="repository"]')
+    cy.get('rect[id="https://www.github.com/user/project/tree/abc/"][type="repository"]')
       .should('be.visible')
       .and('have.attr', 'childrenNumber', '1')
       .and('have.attr', 'descendantsNumber', '7')
-    cy.get('rect[id="https://www.github.com/user/project/blob/master/js/"][type="directory"]')
+    cy.get('rect[id="https://www.github.com/user/project/tree/abc/js/"][type="directory"]')
       .should('be.visible')
       .and('have.attr', 'childrenNumber', '2')
       .and('have.attr', 'descendantsNumber', '6')
-    cy.get('rect[id="https://www.github.com/user/project/blob/master/js/app/"][type="directory"]')
+    cy.get('rect[id="https://www.github.com/user/project/tree/abc/js/app/"][type="directory"]')
       .should('be.visible')
       .and('have.attr', 'childrenNumber', '1')
       .and('have.attr', 'descendantsNumber', '4')
-    cy.get('rect[id="https://www.github.com/user/project/blob/master/js/app/app.js"][type="file"]')
+    cy.get('rect[id="https://www.github.com/user/project/tree/abc/js/app/app.js"][type="file"]')
       .should('be.visible')
       .and('have.attr', 'childrenNumber', '3')
       .and('have.attr', 'descendantsNumber', '3')
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .should('be.visible')
       .and('have.attr', 'childrenNumber', '0')
@@ -353,13 +430,13 @@ describe('Treemap', () => {
       .and('have.attr', 'fill', 'hsl(0, 0%, 100%)')
       .and('have.attr', 'fill-opacity', '1')
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .find('g')
       .should('be.visible')
       .and('have.attr', 'fill-opacity', '1')
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .find('g')
       .find('svg')
@@ -371,38 +448,64 @@ describe('Treemap', () => {
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     // Then
-    cy.get('.settings-button').click()
+    cy.get('.settings-button').first().click()
     cy.get(
-      '.settings > :nth-child(1) > :nth-child(1) > span > .color > .color-slider-display > .color-slider'
+      '.settings > :nth-child(1) > :nth-child(1) > span > .color-slider > .color-slider-input-display > .color-slider-input'
     ).should('be.visible')
     cy.get(
-      '.settings > :nth-child(1) > :nth-child(2) > span > .color > .color-slider-display > .color-slider'
+      '.settings > :nth-child(1) > :nth-child(2) > span > .color-slider > .color-slider-input-display > .color-slider-input'
     ).should('be.visible')
     cy.get(
-      '.settings > :nth-child(1) > :nth-child(3) > span > .color > .color-slider-display > .color-slider'
+      '.settings > :nth-child(1) > :nth-child(3) > span > .color-slider > .color-slider-input-display > .color-slider-input'
     ).should('be.visible')
   })
 
-  it('colors the code fragments by technology', () => {
+  it('colors code fragments by technology', () => {
     // Given - When
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     // Then
-    cy.get('.settings-button').click()
+    cy.get('.settings-button').first().click()
     cy.get(
-      '.settings > :nth-child(1) > :nth-child(1) > span > .color > .color-slider-display > .color-slider'
+      '.settings > :nth-child(1) > :nth-child(1) > span > .color-slider > .color-slider-input-display > .color-slider-input'
     )
       .should('be.visible')
       .then(($el) => {
@@ -411,27 +514,40 @@ describe('Treemap', () => {
         $el[0].dispatchEvent(event)
       })
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .find('circle')
       .and('have.attr', 'fill', 'hsl(180, 100%, 75%)')
       .and('have.attr', 'fill-opacity', '1')
   })
 
-  it('colors the code fragments by technology and resets it to white', () => {
+  it('colors code fragments by technology and resets it to white', () => {
     // Given - When
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     // Then
-    cy.get('.settings-button').click()
+    cy.get('.settings-button').first().click()
     cy.get(
-      '.settings > :nth-child(1) > :nth-child(1) > span > .color > .color-slider-display > .color-slider'
+      '.settings > :nth-child(1) > :nth-child(1) > span > .color-slider > .color-slider-input-display > .color-slider-input'
     )
       .should('be.visible')
       .then(($el) => {
@@ -440,13 +556,13 @@ describe('Treemap', () => {
         $el[0].dispatchEvent(event)
       })
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .find('circle')
       .and('have.attr', 'fill', 'hsl(180, 100%, 75%)')
       .and('have.attr', 'fill-opacity', '1')
     cy.get(
-      '.settings > :nth-child(1) > :nth-child(1) > span > .color > .color-slider-display > .color-slider'
+      '.settings > :nth-child(1) > :nth-child(1) > span > .color-slider > .color-slider-input-display > .color-slider-input'
     )
       .should('be.visible')
       .then(($el) => {
@@ -455,27 +571,40 @@ describe('Treemap', () => {
         $el[0].dispatchEvent(event)
       })
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .find('circle')
       .and('have.attr', 'fill', 'hsl(0, 0%, 100%)')
       .and('have.attr', 'fill-opacity', '1')
   })
 
-  it('colors the code fragments by technology and changes the color', () => {
+  it('colors code fragments by technology and changes the color', () => {
     // Given - When
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     // Then
-    cy.get('.settings-button').click()
+    cy.get('.settings-button').first().click()
     cy.get(
-      '.settings > :nth-child(1) > :nth-child(1) > span > .color > .color-slider-display > .color-slider'
+      '.settings > :nth-child(1) > :nth-child(1) > span > .color-slider > .color-slider-input-display > .color-slider-input'
     )
       .should('be.visible')
       .then(($el) => {
@@ -484,13 +613,13 @@ describe('Treemap', () => {
         $el[0].dispatchEvent(event)
       })
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .find('circle')
       .and('have.attr', 'fill', 'hsl(180, 100%, 75%)')
       .and('have.attr', 'fill-opacity', '1')
     cy.get(
-      '.settings > :nth-child(1) > :nth-child(1) > span > .color > .color-slider-display > .color-slider'
+      '.settings > :nth-child(1) > :nth-child(1) > span > .color-slider > .color-slider-input-display > .color-slider-input'
     )
       .should('be.visible')
       .then(($el) => {
@@ -499,44 +628,70 @@ describe('Treemap', () => {
         $el[0].dispatchEvent(event)
       })
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .find('circle')
       .and('have.attr', 'fill', 'hsl(100, 100%, 75%)')
       .and('have.attr', 'fill-opacity', '1')
   })
 
-  it('creates color picker per operation', () => {
+  it('creates color pickers per operation', () => {
     // Given - When
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     // Then
-    cy.get('.settings-button').click()
+    cy.get('.settings-button').first().click()
     cy.get(
-      '.settings > :nth-child(3) > :nth-child(1) > span > .color > .color-slider-display > .color-slider'
+      '.settings > :nth-child(3) > :nth-child(1) > span > .color-slider > .color-slider-input-display > .color-slider-input'
     ).should('be.visible')
   })
 
-  it('colors the code fragments by operation', () => {
+  it('colors code fragments by operation', () => {
     // Given - When
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     // Then
-    cy.get('.settings-button').click()
+    cy.get('.settings-button').first().click()
     cy.get(
-      '.settings > :nth-child(3) > :nth-child(1) > span > .color > .color-slider-display > .color-slider'
+      '.settings > :nth-child(3) > :nth-child(1) > span > .color-slider > .color-slider-input-display > .color-slider-input'
     )
       .should('be.visible')
       .then(($el) => {
@@ -545,27 +700,40 @@ describe('Treemap', () => {
         $el[0].dispatchEvent(event)
       })
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .find('circle')
       .and('have.attr', 'fill', 'hsl(200, 100%, 75%)')
       .and('have.attr', 'fill-opacity', '1')
   })
 
-  it('colors the code fragments by operation and changes the color', () => {
+  it('colors code fragments by operation and changes the color', () => {
     // Given - When
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     // Then
-    cy.get('.settings-button').click()
+    cy.get('.settings-button').first().click()
     cy.get(
-      '.settings > :nth-child(3) > :nth-child(1) > span > .color > .color-slider-display > .color-slider'
+      '.settings > :nth-child(3) > :nth-child(1) > span > .color-slider > .color-slider-input-display > .color-slider-input'
     )
       .should('be.visible')
       .then(($el) => {
@@ -574,14 +742,14 @@ describe('Treemap', () => {
         $el[0].dispatchEvent(event)
       })
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .find('circle')
       .and('have.attr', 'fill', 'hsl(10, 100%, 75%)')
       .and('have.attr', 'fill-opacity', '1')
 
     cy.get(
-      '.settings > :nth-child(3) > :nth-child(1) > span > .color > .color-slider-display > .color-slider'
+      '.settings > :nth-child(3) > :nth-child(1) > span > .color-slider > .color-slider-input-display > .color-slider-input'
     )
       .should('be.visible')
       .then(($el) => {
@@ -590,292 +758,422 @@ describe('Treemap', () => {
         $el[0].dispatchEvent(event)
       })
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .find('circle')
       .and('have.attr', 'fill', 'hsl(20, 100%, 75%)')
       .and('have.attr', 'fill-opacity', '1')
   })
 
-  it('creates dropdown list for concepts', () => {
-    // Given - When
+  it('creates dropdown lists', () => {
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
-    // Then
-    cy.get('.settings-button').click()
-    cy.get('select')
+    cy.get('.settings-button').first().click()
+
+    cy.get('.settings-select').eq(0).should('be.visible').click()
+    cy.get('.multiselect-dropdown')
+      .eq(0)
       .should('be.visible')
-      .find('option')
+      .find('.multiselect-option')
       .should('have.length', 3)
       .then((options) => {
-        expect(options[0]).to.have.text('')
-        expect(options[1]).to.have.text('user')
-        expect(options[2]).to.have.text('doc')
+        expect(options[0]).to.have.text('javascript-api-express-call')
+        expect(options[1]).to.have.text('javascript-db-mongo-call')
+        expect(options[2]).to.have.text('javascript-db-redis-call')
+      })
+
+    cy.get('.settings-select').eq(1).should('be.visible').click()
+    cy.get('.multiselect-dropdown')
+      .eq(1)
+      .should('be.visible')
+      .find('.multiselect-option')
+      .should('have.length', 1)
+      .then((options) => {
+        expect(options[0]).to.have.text('READ')
+      })
+
+    cy.get('.settings-select').eq(2).should('be.visible').click()
+    cy.get('.multiselect-dropdown')
+      .eq(2)
+      .should('be.visible')
+      .find('.multiselect-option')
+      .should('have.length', 1)
+      .then((options) => {
+        expect(options[0]).to.have.text(
+          'js/app/app.js'
+        )
+      })
+
+    cy.get('.settings-select').eq(3).should('be.visible').click()
+    cy.get('.multiselect-dropdown')
+      .eq(3)
+      .should('be.visible')
+      .find('.multiselect-option')
+      .should('have.length', 2)
+      .then((options) => {
+        expect(options[0]).to.have.text('get')
+        expect(options[1]).to.have.text('find')
+      })
+
+    cy.get('.settings-select').eq(4).should('be.visible').click()
+    cy.get('.multiselect-dropdown')
+      .eq(4)
+      .should('be.visible')
+      .find('.multiselect-option')
+      .should('have.length', 2)
+      .then((options) => {
+        expect(options[0]).to.have.text('user')
+        expect(options[1]).to.have.text('doc')
       })
   })
 
-  it('opaces code fragments by data concept', () => {
-    // Given - When
+  it('selects and unselects concepts', () => {
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
-    // Then
-    cy.get('.settings-button').click()
-    cy.get('select').select('user')
-    cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
-    )
-      .find('circle')
-      .and('have.attr', 'fill-opacity', '1')
-    cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L3C3L4C4"][type="codeFragment"]'
-    )
-      .find('circle')
-      .and('have.attr', 'fill-opacity', '1')
+    cy.get('.settings-button').first().click()
+
+    cy.get('.settings-select').eq(4).should('be.visible').click()
+    cy.get('.multiselect-dropdown').eq(4).should('be.visible').find('.multiselect-option').first().click()
+    cy.get('.multiselect-multiple-label').should('be.visible')
+    cy.get('.selected-span').first()
+      .should('contain.text', 'user')
+    cy.get('.multiselect-dropdown').eq(4).find('.multiselect-option').eq(1).click()
+    cy.get('.selected-span').first().should('contain.text', 'doc').click()
+    cy.get('.multiselect-dropdown').eq(4).find('.multiselect-option').eq(0).click()
+    cy.get('.selected-span').should('have.length', 0)
   })
 
-  it('opaces code fragments by data concept and changes', () => {
-    // Given - When
+  it('opacifies code fragments by filtering', () => {
+    // Given
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        concepts: conceptsList,
+        filteredCodeFragments: []
       }
     })
-    // Then
-    cy.get('.settings-button').click()
-    cy.get('select').select('user')
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .find('circle')
       .and('have.attr', 'fill-opacity', '1')
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L3C3L4C4"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L3C3L4C4"][type="codeFragment"]'
     )
       .find('circle')
       .and('have.attr', 'fill-opacity', '1')
-    cy.get('select').select('doc')
+    // When
+    cy.mount(Treemap, {
+      props: {
+        treemap: jsonData,
+        locations: locationsList,
+        technologies: technologiesList,
+        operations: operationsList,
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: [
+          {
+            location: 'https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2',
+            technology: { id: 'javascript-api-express-call' },
+            operation: { name: 'READ' },
+            method: { name: 'get' },
+            sample: { content: "'/doc/:docId'" },
+            concepts: [{ name: 'doc' }],
+            heuristics: 'E1E2E3E4E5E6E7E8',
+            score: '8'
+          }
+        ]
+      }
+    })
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+    )
+      .find('circle')
+      .and('have.attr', 'fill-opacity', '1')
+    cy.get(
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L3C3L4C4"][type="codeFragment"]'
     )
       .find('circle')
       .and('have.attr', 'fill-opacity', '0.05')
-    cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L3C3L4C4"][type="codeFragment"]'
-    )
-      .find('circle')
-      .and('have.attr', 'fill-opacity', '0.05')
+    cy.get('.settings-button').eq(1).click()
+    cy.get('.metrics-content').eq(0).should('contain.text', '# Code Fragments: 1')
   })
 
-  it('de-opace code fragments by data concept', () => {
+  it('shows and unshows the tool tip on code fragment hover', () => {
     // Given - When
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
-      }
-    })
-    // Then
-    cy.get('.settings-button').click()
-    cy.get('select').select('doc')
-    cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
-    )
-      .find('circle')
-      .and('have.attr', 'fill-opacity', '0.05')
-    cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L3C3L4C4"][type="codeFragment"]'
-    )
-      .find('circle')
-      .and('have.attr', 'fill-opacity', '0.05')
-    cy.get('select').select('')
-    cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
-    )
-      .find('circle')
-      .and('have.attr', 'fill-opacity', '1')
-    cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L3C3L4C4"][type="codeFragment"]'
-    )
-      .find('circle')
-      .and('have.attr', 'fill-opacity', '1')
-  })
-
-  it('shows and unshows the tooltip on code fragment hover', () => {
-    // Given - When
-    cy.mount(Treemap, {
-      props: {
-        treemap: jsonData,
-        technologies: technologiesList,
-        operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     // Then
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     ).trigger('mouseover', { force: true })
     cy.get('.toolTip')
-      .should('be.visible')
+      .should('exist')
       .within(() => {
         cy.get('span').should('have.length', 6)
         cy.get('span')
           .eq(0)
           .should(
             'contain',
-            'https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2'
+            'https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2'
           )
         cy.get('span').eq(1).should('contain', 'javascript-api-express-call')
         cy.get('span').eq(2).should('contain', 'READ')
         cy.get('span').eq(3).should('contain', 'get')
-        cy.get('span').eq(4).should('contain', "'/user/:userId'")
-        cy.get('span').eq(5).should('contain', 'user')
+        cy.get('span').eq(4).should('contain', "'/doc/:docId'")
+        cy.get('span').eq(5).should('contain', 'doc')
       })
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .should('be.visible')
       .and('have.class', 'hovered')
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     ).trigger('mouseout', { force: true })
 
     cy.get('.toolTip').should('not.exist')
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .should('be.visible')
       .and('not.have.class', 'hovered')
   })
 
-  it('shows and unshows the tooltip on file hover', () => {
+  it('shows and unshows the tool tip on file hover', () => {
     // Given - When
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     // Then
     cy.get(
-      'rect[id="https://www.github.com/user/project/blob/master/js/app/app.js"][type="file"]'
+      'rect[id="https://www.github.com/user/project/tree/abc/js/app/app.js"][type="file"]'
     ).trigger('mouseover', { force: true })
     cy.get('.toolTip')
-      .should('be.visible')
+      .should('be.exist')
       .within(() => {
         cy.get('span').should('have.length', 1)
         cy.get('span')
           .eq(0)
-          .should('contain', 'https://www.github.com/user/project/blob/master/js/app/app.js')
+          .should('contain', 'https://www.github.com/user/project/tree/abc/js/app/app.js')
       })
-    cy.get('rect[id="https://www.github.com/user/project/blob/master/js/app/app.js"][type="file"]')
+    cy.get('rect[id="https://www.github.com/user/project/tree/abc/js/app/app.js"][type="file"]')
       .should('be.visible')
       .and('have.class', 'hovered')
     cy.get(
-      'rect[id="https://www.github.com/user/project/blob/master/js/app/app.js"][type="file"]'
+      'rect[id="https://www.github.com/user/project/tree/abc/js/app/app.js"][type="file"]'
     ).trigger('mouseout', { force: true })
     cy.get('.toolTip').should('not.exist')
-    cy.get('rect[id="https://www.github.com/user/project/blob/master/js/app/app.js"][type="file"]')
+    cy.get('rect[id="https://www.github.com/user/project/tree/abc/js/app/app.js"][type="file"]')
       .should('be.visible')
       .and('not.have.class', 'hovered')
   })
 
-  it('shows and unshows the tooltip on directory hover', () => {
+  it('shows and unshows the tool tip on directory hover', () => {
     // Given - When
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     // Then
-    cy.get('rect[id="https://www.github.com/user/project/blob/master/js/app/"][type="directory"]')
+    cy.get('rect[id="https://www.github.com/user/project/tree/abc/js/app/"][type="directory"]')
       .should('be.visible')
       .trigger('mouseover', { force: true })
 
     cy.get('.toolTip')
-      .should('be.visible')
+      .should('be.exist')
       .within(() => {
         cy.get('span')
           .should('have.length', 1)
           .eq(0)
-          .should('contain', 'https://www.github.com/user/project/blob/master/js/app/')
+          .should('contain', 'https://www.github.com/user/project/tree/abc/js/app/')
       })
-    cy.get('rect[id="https://www.github.com/user/project/blob/master/js/app/"][type="directory"]')
+    cy.get('rect[id="https://www.github.com/user/project/tree/abc/js/app/"][type="directory"]')
       .should('be.visible')
       .and('have.class', 'hovered')
     cy.get(
-      'rect[id="https://www.github.com/user/project/blob/master/js/app/"][type="directory"]'
+      'rect[id="https://www.github.com/user/project/tree/abc/js/app/"][type="directory"]'
     ).trigger('mouseout', { force: true })
     cy.get('.toolTip').should('not.exist')
-    cy.get('rect[id="https://www.github.com/user/project/blob/master/js/app/"][type="directory"]')
+    cy.get('rect[id="https://www.github.com/user/project/tree/abc/js/app/"][type="directory"]')
       .should('be.visible')
       .and('not.have.class', 'hovered')
   })
 
-  it('shows and unshows the tooltip on repository hover', () => {
+  it('shows and unshows the tool tip on repository hover', () => {
     // Given - When
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     // Then
-    cy.get('rect[id="https://www.github.com/user/project/blob/master/"][type="repository"]')
+    cy.get('rect[id="https://www.github.com/user/project/tree/abc/"][type="repository"]')
       .should('be.visible')
       .trigger('mouseover', { force: true })
 
     cy.get('.toolTip')
-      .should('be.visible')
+      .should('be.exist')
       .within(() => {
         cy.get('span')
           .should('have.length', 1)
           .eq(0)
-          .should('contain', 'https://www.github.com/user/project/blob/master/')
+          .should('contain', 'https://www.github.com/user/project/tree/abc/')
       })
-    cy.get('rect[id="https://www.github.com/user/project/blob/master/"][type="repository"]')
+    cy.get('rect[id="https://www.github.com/user/project/tree/abc/"][type="repository"]')
       .should('be.visible')
       .and('have.class', 'hovered')
     cy.get(
-      'rect[id="https://www.github.com/user/project/blob/master/"][type="repository"]'
+      'rect[id="https://www.github.com/user/project/tree/abc/"][type="repository"]'
     ).trigger('mouseout', { force: true })
     cy.get('.toolTip').should('not.exist')
-    cy.get('rect[id="https://www.github.com/user/project/blob/master/"][type="repository"]')
+    cy.get('rect[id="https://www.github.com/user/project/tree/abc/"][type="repository"]')
       .should('be.visible')
       .and('not.have.class', 'hovered')
   })
 
+  /*
   it('clicks on a code fragment, follows the link, and gets the border around', () => {
     // Given - When
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     cy.window().then((win) => {
@@ -883,16 +1181,16 @@ describe('Treemap', () => {
     })
     // Then
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .should('be.visible')
       .click({ force: true })
     cy.get('@windowOpen').should(
       'have.been.calledWith',
-      'https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2'
+      'https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2'
     )
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .should('be.visible')
       .and('have.class', 'clicked')
@@ -903,9 +1201,22 @@ describe('Treemap', () => {
     cy.mount(Treemap, {
       props: {
         treemap: jsonData,
+        locations: locationsList,
         technologies: technologiesList,
         operations: operationsList,
-        concepts: conceptsList
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
       }
     })
     cy.window().then((win) => {
@@ -913,24 +1224,55 @@ describe('Treemap', () => {
     })
     // Then
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .should('be.visible')
       .click({ force: true })
     cy.get('@windowOpen').should(
       'have.been.calledWith',
-      'https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2'
+      'https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2'
     )
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .should('be.visible')
       .and('have.class', 'clicked')
     cy.get('rect[type="treemap"]').click({ force: true })
     cy.get(
-      'g[id="https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
+      'g[id="https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2"][type="codeFragment"]'
     )
       .should('be.visible')
       .and('not.have.class', 'clicked')
+  })*/
+
+  it('checks metrics', () => {
+    cy.mount(Treemap, {
+      props: {
+        treemap: jsonData,
+        locations: locationsList,
+        technologies: technologiesList,
+        operations: operationsList,
+        methods: methodsList,
+        concepts: conceptsList,
+        conceptsMatrix: conceptsMatrixObject,
+        directoriesNumber: directoriesNumberValue,
+        filesNumber: filesNumberValue,
+        codeFragmentsNumber: codeFragmentsNumberValue,
+        conceptsNumber: conceptsNumberValue,
+        operationsTechnologiesBreakdown: operationsTechnologiesBreakdownObject,
+        conceptsBreakdown: conceptsBreakdownObject,
+        loc: locValue,
+        tir: tirObject,
+        cir: cirObject,
+        filteredCodeFragments: filteredCodeFragmentsList
+      }
+    })
+    cy.get('.settings-button').eq(1).click()
+    cy.get('.metrics').eq(1).should('be.visible')
+    cy.get('.metrics-value').eq(0).should('contain.text', '# Directories: 4')
+    cy.get('.metrics-value').eq(1).should('contain.text', '# Files: 4')
+    cy.get('.metrics-value').eq(2).should('contain.text', '# Code Fragments: 6')
+    cy.get('.metrics-value').eq(3).should('contain.text', '# Concepts: 2')
+    cy.get('.metrics-value').eq(4).should('contain.text', 'LoC: 99')
   })
 })

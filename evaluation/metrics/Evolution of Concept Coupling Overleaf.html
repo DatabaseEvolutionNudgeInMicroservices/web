@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evolution of the Top-5 Concept Coupling in Overleaf</title>
+  <script src="https://cdn.plot.ly/plotly-3.5.1.min.js"></script>
+  <style>
+      body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+      }
+
+      .plot {
+          height: 300px;
+      }
+
+      .graph-container {
+          margin: 0;
+          padding: 0;
+      }
+
+      .graph-date {
+          text-align: center;
+          font-size: 14px;
+          color: #000;
+      }
+
+      #charts {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+      }
+  </style>
+</head>
+
+<body>
+
+<div id="charts"></div>
+
+<script>
+
+  /* Constants */
+
+  const nodeIds = ['project', 'user', 'doc', 'message', 'doc history', 'message', 'history', 'version', '']
+
+  /* Colors */
+
+  function generateRandomColors() {
+    const r = Math.floor(Math.random() * 256)
+    const g = Math.floor(Math.random() * 256)
+    const b = Math.floor(Math.random() * 256)
+    return `rgb(${r}, ${g}, ${b})`
+  }
+
+  const colorMap = {}
+  nodeIds.forEach(id => {
+    colorMap[id] = generateRandomColors()
+  })
+
+  /* Layout */
+
+  function generateCircularLayout(ids) {
+    const result = {}
+    const radius = 1
+    const angleStep = (2 * Math.PI) / ids.length
+    ids.forEach((id, i) => {
+      const angle = i * angleStep
+      result[id] = {
+        x: radius * Math.cos(angle),
+        y: radius * Math.sin(angle)
+      }
+    })
+    return result
+  }
+
+  const fixedLayout = generateCircularLayout(nodeIds)
+
+  /* Data */
+
+  const graphSequence = [
+    {
+      date: 'August 5th 2021',
+      nodes: [
+        { id: 'project', size: 38.2 },
+        { id: 'user', size: 19.3 },
+        { id: 'doc', size: 14.2 },
+        { id: 'message', size: 4.4 },
+        { id: 'doc history', size: 3.5 },
+      ],
+      edges: [
+        { source: 'project', target: 'user', weight: 1.8 },
+        { source: 'project', target: 'doc', weight: 8.2 },
+        { source: 'project', target: 'message', weight: 2 },
+        { source: 'user', target: 'doc', weight: 0.1 },
+      ]
+    },
+    {
+      date: 'February 7th 2022',
+      nodes: [
+        { id: 'project', size: 39.3 },
+        { id: 'user', size: 20 },
+        { id: 'doc', size: 14.8 },
+        { id: 'doc history', size: 4 },
+        { id: 'message', size: 3.9 },
+      ],
+      edges: [
+        { source: 'project', target: 'user', weight: 1.8 },
+        { source: 'project', target: 'doc', weight: 8.2 },
+        { source: 'project', target: 'message', weight: 1.5 },
+        { source: 'user', target: 'doc', weight: 0.1 },
+      ]
+    },
+    {
+      date: 'August 5th 2022',
+      nodes: [
+        { id: 'project', size: 41.2 },
+        { id: 'user', size: 27.7 },
+        { id: 'doc', size: 15.3 },
+        { id: 'message', size: 4.2 },
+        { id: 'doc history', size: 4 },
+      ],
+      edges: [
+        { source: 'project', target: 'user', weight: 1.8 },
+        { source: 'project', target: 'doc', weight: 8.1 },
+        { source: 'project', target: 'message', weight: 1.5 },
+        { source: 'user', target: 'doc', weight: 0.1 },
+      ]
+    },
+    {
+      date: 'February 6th 2023',
+      nodes: [
+        { id: 'project', size: 59.2 },
+        { id: 'user', size: 25.8 },
+        { id: 'doc', size: 15.3 },
+        { id: 'history', size: 5.5 },
+        { id: 'version', size: 4.5 },
+      ],
+      edges: [
+        { source: 'project', target: 'user', weight: 2.5 },
+        { source: 'project', target: 'doc', weight: 8.1 },
+        { source: 'project', target: 'history', weight: 5.5 },
+        { source: 'project', target: 'version', weight: 4.4 },
+        { source: 'user', target: 'doc', weight: 0.1 },
+        { source: 'version', target: 'doc', weight: 0.3 },
+      ]
+    },
+    {
+      date: 'August 8th 2023',
+      nodes: [
+        { id: 'project', size: 57.1 },
+        { id: 'user', size: 25.2 },
+        { id: 'doc', size: 15.5 },
+        { id: 'history', size: 5.5 },
+        { id: 'version', size: 4.5 },
+      ],
+      edges: [
+        { source: 'project', target: 'user', weight: 2.5 },
+        { source: 'project', target: 'doc', weight: 8 },
+        { source: 'project', target: 'history', weight: 5.5 },
+        { source: 'project', target: 'version', weight: 4.4 },
+        { source: 'user', target: 'doc', weight: 0.1 },
+        { source: 'version', target: 'doc', weight: 0.3 },
+      ]
+    },
+    {
+      date: 'February 5th 2024',
+      nodes: [
+        { id: 'project', size: 56.4 },
+        { id: 'user', size: 25.9 },
+        { id: 'doc', size: 14.1 },
+        { id: 'history', size: 5.5 },
+        { id: 'version', size: 4.5 },
+      ],
+      edges: [
+        { source: 'project', target: 'user', weight: 2.5 },
+        { source: 'project', target: 'doc', weight: 6.4 },
+        { source: 'project', target: 'history', weight: 5.5 },
+        { source: 'project', target: 'version', weight: 4.4 },
+        { source: 'user', target: 'doc', weight: 0.1 },
+        { source: 'version', target: 'history', weight: 3 },
+      ]
+    },
+    {
+      date: 'August 5th 2024',
+      nodes: [
+        { id: 'project', size: 56.9 },
+        { id: 'user', size: 26.2 },
+        { id: 'doc', size: 14.7 },
+        { id: 'history', size: 5.4 },
+        { id: 'version', size: 4.6 },
+      ],
+      edges: [
+        { source: 'project', target: 'user', weight: 2.5 },
+        { source: 'project', target: 'doc', weight: 6.5 },
+        { source: 'project', target: 'history', weight: 5.4 },
+        { source: 'project', target: 'version', weight: 4.5 },
+        { source: 'user', target: 'doc', weight: 0.1 },
+        { source: 'version', target: 'history', weight: 3 },
+      ]
+    },
+    {
+      date: 'February 5th 2025',
+      nodes: [
+        { id: 'project', size: 66.3 },
+        { id: 'user', size: 28.8 },
+        { id: 'doc', size: 15.2 },
+        { id: 'history', size: 6.7 },
+        { id: 'version', size: 4.8 },
+      ],
+      edges: [
+        { source: 'project', target: 'user', weight: 2.1 },
+        { source: 'project', target: 'doc', weight: 6.9 },
+        { source: 'project', target: 'history', weight: 6.6 },
+        { source: 'project', target: 'version', weight: 4.7 },
+        { source: 'user', target: 'doc', weight: 0.1 },
+        { source: 'version', target: 'history', weight: 3 },
+      ]
+    },
+    {
+      date: 'August 5th 2025',
+      nodes: [
+        { id: 'project', size: 71.4 },
+        { id: 'user', size: 33.1 },
+        { id: 'doc', size: 15.9 },
+        { id: 'history', size: 6.9 },
+        { id: 'version', size: 4.8 },
+      ],
+      edges: [
+        { source: 'project', target: 'user', weight: 2 },
+        { source: 'project', target: 'doc', weight: 6.9 },
+        { source: 'project', target: 'history', weight: 6.7 },
+        { source: 'project', target: 'version', weight: 4.7 },
+        { source: 'user', target: 'doc', weight: 0.1 },
+        { source: 'version', target: 'history', weight: 3 },
+      ]
+    },
+    {
+      date: 'February 5th 2026',
+      nodes: [
+        { id: 'project', size: 75.5 },
+        { id: 'user', size: 31.4 },
+        { id: 'doc', size: 17.5 },
+        { id: 'history', size: 7.9 },
+        { id: 'version', size: 5.4 },
+      ],
+      edges: [
+        { source: 'project', target: 'user', weight: 1.9 },
+        { source: 'project', target: 'doc', weight: 8.5 },
+        { source: 'project', target: 'history', weight: 7.7 },
+        { source: 'project', target: 'version', weight: 5.2 },
+        { source: 'user', target: 'doc', weight: 0.1 },
+        { source: 'version', target: 'history', weight: 3.3 },
+      ]
+    }
+  ]
+
+  /* Chart */
+
+  const charts = document.getElementById('charts')
+
+  graphSequence.forEach((graph, index) => {
+
+    graph.nodes = graph.nodes.map(node => ({
+      ...node,
+      x: fixedLayout[node.id].x,
+      y: fixedLayout[node.id].y,
+      color: colorMap[node.id]
+    }))
+
+    const wrapper = document.createElement('div')
+    wrapper.className = 'graph-container'
+
+    const date = document.createElement('div')
+    date.className = 'graph-date'
+    date.innerText = graph.date
+
+    const plot = document.createElement('div')
+    plot.className = 'plot'
+    plot.id = `plot-${index}`
+
+    wrapper.appendChild(date)
+    wrapper.appendChild(plot)
+    charts.appendChild(wrapper)
+
+    renderGraph(plot.id, graph)
+  })
+
+  function renderGraph(plotId, graph) {
+
+    const nodeMap = Object.fromEntries(
+      graph.nodes.map(n => [n.id, n])
+    )
+
+    const edgeTraces = graph.edges.map(edge => {
+      const s = nodeMap[edge.source]
+      const t = nodeMap[edge.target]
+      return {
+        type: 'scatter',
+        mode: 'lines',
+        x: [s.x, t.x],
+        y: [s.y, t.y],
+        line: {
+          width: edge.weight,
+          color: '#888'
+        },
+        hoverinfo: 'none',
+        showlegend: false
+      }
+    })
+
+    const nodeTrace = {
+      type: 'scatter',
+      mode: 'markers+text',
+      x: graph.nodes.map(n => n.x),
+      y: graph.nodes.map(n => n.y),
+      text: graph.nodes.map(n => n.id),
+      textposition: 'top center',
+      marker: {
+        size: graph.nodes.map(n => n.size),
+        color: graph.nodes.map(
+          n => n.color
+        ),
+        opacity: 1,
+      },
+      hoverinfo: 'none',
+      showlegend: false
+    }
+
+    const layout = {
+      xaxis: {
+        visible: false,
+        range: [-1.5, 1.5]
+      },
+      yaxis: {
+        visible: false,
+        scaleanchor: 'x',
+        scaleratio: 1,
+        range: [-1.5, 1.5]
+      },
+      hovermode: 'closest',
+      paper_bgcolor: 'transparent',
+      plot_bgcolor: 'transparent',
+      margin: {
+        l: 0,
+        r: 0,
+        t: 0,
+        b: 0
+      }
+    }
+
+    Plotly.newPlot(
+      plotId,
+      [...edgeTraces, nodeTrace],
+      layout,
+      {
+        responsive: true
+      }
+    )
+  }
+</script>
+
+</body>
+</html>

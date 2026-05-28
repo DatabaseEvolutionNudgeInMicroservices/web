@@ -11,7 +11,7 @@ describe('Json file uploader', () => {
     // Given - When - Then
     cy.mount(JsonFileUploader)
     cy.get('.json-button').should('not.exist')
-    cy.get('.json-content').contains('null')
+    cy.get('.json-content').should('not.exist')
   })
 
   it('uploads a JSON file and returns its content', () => {
@@ -25,14 +25,14 @@ describe('Json file uploader', () => {
 
     // Then
     cy.get('.json-button').should('be.visible')
-    cy.get('.json-content').parent().should('have.class', 'd-none')
+    cy.get('.json-content').should('not.exist')
     cy.get('.json-button').click()
-    cy.get('.json-content').parent().should('not.have.class', 'd-none')
+    cy.get('.json-content').should('be.visible')
     cy.get('.json-content').contains('"name": "Test name"').should('be.visible')
     cy.get('.json-content').contains('"type": "Test type"').should('be.visible')
     cy.get('.json-content').contains('"content": "Test content"').should('be.visible')
     cy.get('.json-button').click()
-    cy.get('.json-content').parent().should('have.class', 'd-none')
+    cy.get('.json-content').should('not.exist')
   })
 
   it('uploads an invalid JSON file and returns an error', () => {

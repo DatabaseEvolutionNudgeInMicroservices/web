@@ -13,14 +13,25 @@ export default {
         return validTypes.includes(value)
       }
     }
+  },
+  emits: ['close'],
+  methods: {
+    onClose() {
+      this.$emit('close')
+    }
   }
 }
 </script>
 
 <template>
-  <div v-if="message" :class="`alert alert-${type}`" role="alert">
+  <div v-if="message" :class="`alert alert-${type} position-relative`" role="alert">
     {{ message }}
+
+    <button
+      type="button"
+      class="btn-close position-absolute top-0 end-0 m-2"
+      aria-label="Close"
+      @click="onClose"
+    ></button>
   </div>
 </template>
-
-<style scoped></style>

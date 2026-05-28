@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolution of LoC in Overleaf</title>
+  <script src='https://cdn.plot.ly/plotly-3.5.1.min.js'></script>
+</head>
+<body>
+<div id="chart"></div>
+<script>
+  var locTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [355972, 368470, 361093, 420266, 456123, 461709, 479920, 520324, 552251, 579662],
+    type: 'scatter',
+    marker: {
+      color: '#000'
+    },
+    name: 'LoC'
+  }
+
+  var data = [locTrace]
+
+  var layout = {
+
+    width: 500,
+    height: 500,
+    margin: {
+      b: 150
+    },
+
+    showlegend: false,
+
+    xaxis: {
+      title: {
+        text: ''
+      }
+    },
+
+    yaxis: {
+      title: {
+        text: 'LoC'
+      }
+    }
+  }
+
+  Plotly.newPlot('chart', data, layout)
+</script>
+</body>
+</html>

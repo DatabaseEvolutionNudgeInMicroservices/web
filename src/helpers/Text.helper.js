@@ -1,18 +1,95 @@
 // Texts
 
+// Texts: General app
 export const APP_NAME = 'DENIM'
-export const TREEMAP = 'Treemap'
-export const WELCOME = 'Welcome to DENIM'
-export const GET_STARTED = 'Get started'
-export const BACK = 'Back'
+export const SLOGAN =
+  'Extract. Understand. Illustrate. Explore.<br/>A fresh perspective on your data-centric microservices codebases.'
+// Texts: General terms
+export const BACK = '← Back'
 export const START_UPLOAD_JSON = 'Upload a JSON file to start.'
+export const START_UPLOAD_ZIP = 'Upload a ZIP file to start.'
+export const START_ENTER_GIT_URLS =
+  'Enter the URLs of the Git repositories to get started. Please respect the following format: https://(github|gitlab).com/<user>/<repository>/tree/<hash>'
+export const SELECT_FILE = 'Select a file'
 export const LOADING = 'Loading...'
-
-// Error messages
-
+export const THE_DATE = 'Date'
+export const SECONDS_ABBREVIATION = 's.'
+export const METRICS = 'Metrics'
+export const FILTERING = 'Filtering'
+export const NO_DATA = 'No data'
+export const TOTAL = 'TOTAL'
+export const DEMO = '🕹️ Try our demo'
+// Texts: Specific terms
+export const TECHNOLOGY = 'Technology'
+export const OPERATION_TYPE = 'Operation type'
+export const ARGUMENT = 'Argument'
+export const STATIC = 'Static'
+export const DYNAMIC = 'Dynamic'
+export const FRAME = 'Frame'
+export const LOC = 'LoC'
+export const TECHNOLOGIES_OPERATIONS_BREAKDOWN = 'Technologies and Operations Breakdown'
+export const SELECT_CONCEPT = 'Select a concept'
+export const SELECT_CONCEPTS = 'Select concepts'
+export const SELECT_TECHNOLOGY = 'Select a technology'
+export const SELECT_OPERATION = 'Select an operation'
+export const SELECT_METHOD = 'Select a method'
+export const SELECT_LOCATION = 'Select a location'
+// Texts: Home
+export const GET_STARTED = 'Get started'
+export const GET_STARTED_TEXT =
+  'Download your code to explore our analysis and visualization tools.'
+// Texts: Features
+export const DOWNLOADING = 'Downloading'
+export const DOWNLOAD = 'Download'
+export const REVERSE_ENGINEERING = 'Reverse Engineering'
+export const STATIC_ANALYSIS = 'Static Analysis'
+export const DYNAMIC_ANALYSIS = 'Dynamic Analysis'
+export const VISUALIZING = 'Visualizing'
+export const TREEMAP = 'Treemap'
+export const TIMELINE = 'Timeline'
+export const ANIMATED_HEAT_TREEMAP = 'Animated Heat Treemap'
+export const EVOLVING = 'Evolving'
+export const EVOLUTIONARY_TREEMAP = 'Evolutionary Treemap'
+export const DIFFERENCE_TREEMAP = 'Difference Treemap'
+export const COMPARISON_TREEMAP = 'Comparison Treemap'
+// Texts: Animated Heat Treemap & Timeline
+export const FRAMES_LINES = 'Frame lines'
+export const FRAMES_LINES_TIMEOUT = 'Frame lines timeout'
+export const REALISTIC_TIME_SCALE = 'Realistic time scale'
+export const REALISTIC_TIME_SCALE_FAST_FORWARD_TIMEOUT = 'Realistic time scale fast-forward timeout'
+export const FRAMES_TIME_WINDOW = 'Frames time window'
+export const FRAMES_TIME_WINDOW_TIMEOUT = 'Frames time window timeout'
+export const NB_FRAMES_TIME_ELAPSED = 'frame(s) since the beginning'
+export const NB_FRAMES_TIME_WINDOW = 'frame(s) in the last'
+export const PREVIOUS_FRAME = 'Previous frames'
+export const UPCOMING_FRAMES = 'Upcoming frames'
+export const CURRENT_POSITION = 'Current position'
+export const NO_PREVIOUS_FRAME = 'No previous frames'
+export const NO_CURRENT_FRAME = 'No current frames'
+export const NO_UPCOMING_FRAME = 'No upcoming frames'
+// Texts: Download
+export const DOWNLOAD_PLACEHOLDER = 'e.g., https://github.com/user/repo/tree/hash'
+export const CODE_BASE_URLS = 'Code base URL(s)'
+// Texts: Reverse Engineering
+export const CODE_BASE = 'Code base'
+export const OPTIONS = 'Options'
+// Texts: Treemap
+export const TOP_10_CONCEPT_CO_OCCURRENCE = 'Top 10 Concept Co-Occurrence'
+export const DIRECTORIES_NUMBER = '# Directories'
+export const FILES_NUMBER = '# Files'
+export const CODE_FRAGMENTS_NUMBER = '# Code Fragments'
+export const CONCEPTS_NUMBER = '# Concepts'
+export const COMMITS_NUMBER = '# Commits'
+// Texts: Evolutionary Treemap
+export const CONCEPT_FREQUENCY_CO_CHANGED_FILES = 'Concept Frequency in Co-Changed Files'
+export const CHANGES = ' change(s)'
+// Texts: Error titles
 export const ERROR_404 = 'Error 404'
 export const INVALID_JSON = 'Invalid JSON file. Please try with a JSON file.'
+export const INVALID_ZIP = 'Invalid ZIP file. Please try with a ZIP file.'
 export const UNREADABLE_JSON = 'JSON file unreadable. Please try again.'
-
+export const UNREADABLE_ZIP = 'ZIP file unreadable. Please try again.'
+export const INPUT_INCORRECTLY_FORMATTED = 'Input incorrectly formatted.'
+// Texts: Error messages
 export const BAD_FORMAT = 'Bad format.'
-export const BAD_FILTER = 'Bad filter.'
+export const BAD_OPERATION = 'Bad operation.'

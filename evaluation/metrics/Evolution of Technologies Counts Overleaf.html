@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolution of Technologies Counts in Overleaf</title>
+
+  <script src="https://cdn.plot.ly/plotly-3.5.1.min.js"></script>
+</head>
+
+<body>
+<div id="chart"></div>
+
+<script>
+  const dates = ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026']
+
+  const technologyColors = {
+    ExpressJS: '#ebd81c',
+    MongoDB: '#0fa54d',
+    Redis: '#f74236'
+  }
+
+  function createTrace(group, technology, values) {
+    return {
+      x: dates,
+      y: values,
+
+      name: `${technology}`,
+
+      type: 'bar',
+
+      offsetgroup: group,
+      legendgroup: technology,
+
+      marker: {
+        color: technologyColors[technology],
+        line: {
+          color: '#fff',
+          width: 1
+        }
+      }
+    }
+  }
+
+  const data = [
+
+    /*
+      ExpressJS
+    */
+    createTrace('', 'ExpressJS', [805, 820, 909, 1069, 1069, 1049, 1060, 1157, 1212, 1238]),
+
+    /*
+      MongoDB
+    */
+    createTrace('', 'MongoDB', [369, 406, 448, 562, 564, 545, 609, 717, 847, 901]),
+
+    /*
+      Redis
+    */
+    createTrace('', 'Redis', [224, 250, 239, 282, 316, 337, 343, 349, 428, 453])
+  ]
+
+  const layout = {
+
+    width: 500,
+    height: 500,
+    margin: {
+      b: 150
+    },
+
+    title: 'Evolution of Technologies Counts in Overleaf',
+
+    barmode: 'stack',
+
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff',
+
+    xaxis: {
+      title: { text: '' },
+      gridcolor: '#e0e0e0'
+    },
+
+    yaxis: {
+      title: { text: '# Code fragments' },
+      gridcolor: '#e0e0e0'
+    },
+
+    legend: {
+      orientation: 'v'
+    },
+
+    showlegend: true,
+
+    font: {
+      family: 'Arial, sans-serif',
+      size: 14,
+      color: '#212121'
+    }
+  }
+
+  Plotly.newPlot('chart', data, layout)
+</script>
+</body>
+</html>

@@ -1,15 +1,15 @@
 <script setup>
 // Helpers
-
-import { RouterLink, RouterView } from 'vue-router'
-import { APP_NAME, TREEMAP } from '@/helpers/Text.helper'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <RouterLink class="navbar-brand" to="/">{{ APP_NAME }}</RouterLink>
+        <RouterLink class="navbar-brand" to="/"
+          ><img src="/src/assets/img/icon.png" class="icon-header"
+        /></RouterLink>
         <button
           class="navbar-toggler"
           type="button"
@@ -22,11 +22,7 @@ import { APP_NAME, TREEMAP } from '@/helpers/Text.helper'
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <RouterLink class="nav-link active" to="/Treemap">{{ TREEMAP }}</RouterLink>
-            </li>
-          </ul>
+          <ul class="navbar-nav"></ul>
         </div>
       </div>
     </nav>
@@ -36,4 +32,10 @@ import { APP_NAME, TREEMAP } from '@/helpers/Text.helper'
   </main>
 </template>
 
-<style scoped></style>
+<style>
+/* Images */
+
+.icon-header {
+  width: 30px;
+}
+</style>

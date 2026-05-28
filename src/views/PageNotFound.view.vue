@@ -1,21 +1,17 @@
 <script>
-// Components
-
-import TextHeader from '@/components/TextHeader.component.vue'
-
 // Helpers
-
 import { RouterLink } from 'vue-router'
-import { ERROR_404, BACK } from '@/helpers/Text.helper'
+import { APP_NAME, BACK, ERROR_404 } from '@/helpers/Text.helper'
 
 export default {
   components: {
-    RouterLink,
-    TextHeader
+    RouterLink
   },
   data() {
     return {
+      // Texts.
       ERROR_404,
+      APP_NAME,
       BACK
     }
   }
@@ -23,10 +19,35 @@ export default {
 </script>
 
 <template>
-  <div class="container top text-center">
-    <TextHeader :message="ERROR_404" />
-    <RouterLink class="btn btn-dark" to="/">{{ BACK }}</RouterLink>
+  <div>
+    <!-- ERROR -->
+    <section class="error">
+      <div class="error-content">
+        <div class="container">
+          <h1 class="display-4 fw-bold">{{ ERROR_404 }}</h1>
+          <p>
+            <RouterLink class="large-button top" to="/">{{ BACK }}</RouterLink>
+          </p>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* Error */
+
+.error {
+  position: relative;
+  height: 50vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.error-content {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  inset: 0;
+}
+</style>

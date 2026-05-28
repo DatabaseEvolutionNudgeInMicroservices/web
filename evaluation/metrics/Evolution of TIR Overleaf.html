@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolution of TIR in Overleaf</title>
+  <script src='https://cdn.plot.ly/plotly-3.5.1.min.js'></script>
+</head>
+<body>
+<div id="chart"></div>
+<script>
+  var tirRedisTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [2.59, 2.76, 2.75, 2.58, 2.79, 2.96, 2.91, 2.83, 3.03, 3.04],
+    type: 'scatter',
+    marker: {
+      color: '#f74236'
+    },
+    name: 'Redis'
+  }
+
+  var tirExpressTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [7.29, 6.71, 6.68, 5.9, 4.82, 4.51, 4.26, 4.09, 3.9, 3.46],
+    type: 'scatter',
+    marker: {
+      color: '#ebd81c'
+    },
+    name: 'ExpressJS'
+  }
+
+  var tirMongoDBTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [5.17, 5.35, 5.41, 5.36, 4.63, 4.72, 4.82, 5.07, 5.48, 5.5],
+    type: 'scatter',
+    marker: {
+      color: '#0fa54d'
+    },
+    name: 'MongoDB'
+  }
+
+  var data = [tirExpressTrace, tirMongoDBTrace, tirRedisTrace]
+
+  var layout = {
+
+    width: 500,
+    height: 500,
+    margin: {
+      b: 150
+    },
+
+    showlegend: true,
+
+    xaxis: {
+      title: {
+        text: ''
+      }
+    },
+
+    yaxis: {
+      title: {
+        text: 'TIR (%)'
+      }
+    }
+  }
+
+  Plotly.newPlot('chart', data, layout)
+</script>
+</body>
+</html>

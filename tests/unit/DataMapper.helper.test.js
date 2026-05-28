@@ -9,10 +9,15 @@ import { DataMapper } from '@/helpers/DataMapper.helper'
 // Model
 
 import { Treemap } from '@/models/Treemap.model'
+import { Location } from '@/models/Location.model'
 
 // Error
 
 import { BadFormat } from '@/errors/BadFormat.error'
+import { INPUT_INCORRECTLY_FORMATTED } from '@/helpers/Text.helper'
+import { Frame } from '@/models/Frame.model.js'
+import { Technology } from '@/models/Technology.model.js'
+import { Operation } from '@/models/Operation.model.js'
 
 const treemap = new Treemap(
   'treemap',
@@ -392,7 +397,7 @@ describe('Data mapper helper', function () {
     ).toEqual('#EEEEEE')
   })
 
-  it('opace code fragments by concept name', function () {
+  it('opacify code fragments by concept name', function () {
     // Given
     let dataMapper = new DataMapper()
     let conceptName = 'project'
@@ -448,7 +453,7 @@ describe('Data mapper helper', function () {
           item.setColor('#EEEEEE')
         }
       })
-    }).toThrow(new BadFormat())
+    }).toThrow(new BadFormat(INPUT_INCORRECTLY_FORMATTED))
   })
 
   it('tries to color code fragments by technology id when treemap is null', function () {
@@ -465,7 +470,7 @@ describe('Data mapper helper', function () {
           item.setColor('#EEEEEE')
         }
       })
-    }).toThrow(new BadFormat())
+    }).toThrow(new BadFormat(INPUT_INCORRECTLY_FORMATTED))
   })
 
   it('tries to color code fragments by technology id when colorization function is null', function () {
@@ -474,7 +479,101 @@ describe('Data mapper helper', function () {
 
     // When Then
     expect(() => {
-      dataMapper.colorTreemap(treemap, null).toThrow(new BadFormat())
+      dataMapper.colorTreemap(treemap, null).toThrow(new BadFormat(INPUT_INCORRECTLY_FORMATTED))
     })
   })
+
+  it('colors timeline frame by technology id', () => {
+    // Given
+    const dataMapper = new DataMapper()
+    const timestamp = Date.now()
+    const frame = new Frame(
+      'https://github.com/overleaf/overleaf/tree/f94adbf0399dd2bc5daba9d118378d1d80b24d3f/services/clsi/app.js#L87C1-L91C1',
+      timestamp,
+      new Technology('javascript-db-mongo-call'),
+      new Operation('CREATE'),
+      ['']
+    )
+
+    // When
+    const frameObject = dataMapper.colorFrame(frame, (item) => {
+      if (item.getOperation().getName() === 'CREATE') {
+        item.setColor('#EEEEEE')
+      }
+    })
+
+    // Then
+    expect(frameObject.getColor()).toEqual('#EEEEEE')
+  })
+
+  it('tries to color a frame by technology id when the frame is null', () => {
+    // Given
+    const dataMapper = new DataMapper()
+
+    // When Then
+    expect(() => dataMapper.colorFrame(null, (item) => {
+      if (item.getOperation().getName() === 'CREATE') {
+        item.setColor('#EEEEEE')
+      }
+    })).toThrow(new BadFormat(INPUT_INCORRECTLY_FORMATTED))
+  })
+
+  it('tries to color a frame by technology id when the coloration fonction is null', () => {
+    // Given
+    const dataMapper = new DataMapper()
+    const timestamp = Date.now()
+    const frame = new Frame(
+      'https://github.com/overleaf/overleaf/tree/f94adbf0399dd2bc5daba9d118378d1d80b24d3f/services/clsi/app.js#L87C1-L91C1',
+      timestamp,
+      new Technology('javascript-db-mongo-call'),
+      new Operation('CREATE'),
+      ['']
+    )
+
+    // When Then
+    expect(() => dataMapper.colorFrame(frame, null)).toThrow(
+      new BadFormat(INPUT_INCORRECTLY_FORMATTED)
+    )
+  })
+
+  // ---------------------------------------------------------------
+  // Location
+  // ---------------------------------------------------------------
+
+  it('extracts location from a given Github location string', () => {
+    // Given
+    const dataMapper = new DataMapper()
+    const location = 'https://github.com/overleaf/overleaf/tree/c4e6dfbbbd69ef58435abe969b2218d6696a138c/libraries/access-token-encryptor/lib/js/AccessTokenEncryptor.js#L135C26-L135C75'
+
+    // When
+    const extractedLocation = dataMapper.extractLocation(location)
+
+    // Then
+    expect(extractedLocation).toStrictEqual(new Location(
+      'libraries/access-token-encryptor/lib/js/AccessTokenEncryptor.js',
+      135,
+      26,
+      135,
+      75
+    ))
+  })
+
+  it('tries to extract location from a Github location string without lines and columns', () => {
+    // Given
+    const dataMapper = new DataMapper()
+    const location = 'https://github.com/overleaf/overleaf/tree/c4e6dfbbbd69ef58435abe969b2218d6696a138c/libraries/access-token-encryptor/lib/js/AccessTokenEncryptor.js'
+
+    // When Then
+    expect(() => dataMapper.extractLocation(location)).toThrow(new BadFormat(INPUT_INCORRECTLY_FORMATTED))
+  })
+
+  it('tries to extract location from a Github location string without tree hash', () => {
+    // Given
+    const dataMapper = new DataMapper()
+    const location = 'https://github.com/overleaf/overleaf/libraries/access-token-encryptor/lib/js/AccessTokenEncryptor.js#L135C26-L135C75'
+
+    // When Then
+    expect(() => dataMapper.extractLocation(location)).toThrow(new BadFormat(INPUT_INCORRECTLY_FORMATTED))
+  })
 })
+

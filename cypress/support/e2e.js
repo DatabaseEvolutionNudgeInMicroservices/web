@@ -16,7 +16,7 @@ beforeEach(() => {
       children: [
         {
           type: 'repository',
-          data: { location: 'https://www.github.com/user/project/blob/master/' },
+          data: { location: 'https://www.github.com/user/project/tree/abc/' },
           childrenNumber: 1,
           descendantsNumber: 7,
           width: 135,
@@ -26,7 +26,7 @@ beforeEach(() => {
           children: [
             {
               type: 'directory',
-              data: { location: 'https://www.github.com/user/project/blob/master/js/' },
+              data: { location: 'https://www.github.com/user/project/tree/abc/js/' },
               childrenNumber: 2,
               descendantsNumber: 6,
               width: 120,
@@ -36,7 +36,7 @@ beforeEach(() => {
               children: [
                 {
                   type: 'directory',
-                  data: { location: 'https://www.github.com/user/project/blob/master/js/app/' },
+                  data: { location: 'https://www.github.com/user/project/tree/abc/js/app/' },
                   childrenNumber: 1,
                   descendantsNumber: 4,
                   width: 77.5,
@@ -47,7 +47,7 @@ beforeEach(() => {
                     {
                       type: 'file',
                       data: {
-                        location: 'https://www.github.com/user/project/blob/master/js/app/app.js'
+                        location: 'https://www.github.com/user/project/tree/abc/js/app/app.js'
                       },
                       childrenNumber: 3,
                       descendantsNumber: 3,
@@ -60,12 +60,12 @@ beforeEach(() => {
                           type: 'codeFragment',
                           data: {
                             location:
-                              'https://www.github.com/user/project/blob/master/js/app/app.js#L1C1L2C2',
+                              'https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2',
                             technology: { id: 'javascript-api-express-call' },
                             operation: { name: 'READ' },
                             method: { name: 'get' },
-                            sample: { content: "'/user/:userId'" },
-                            concepts: [{ name: 'user' }],
+                            sample: { content: "'/doc/:docId'" },
+                            concepts: [{ name: 'doc' }],
                             heuristics: 'E1E2E3E4E5E6E7E8',
                             score: '8'
                           },
@@ -83,7 +83,7 @@ beforeEach(() => {
                           type: 'codeFragment',
                           data: {
                             location:
-                              'https://www.github.com/user/project/blob/master/js/app/app.js#L3C3L4C4',
+                              'https://www.github.com/user/project/tree/abc/js/app/app.js#L3C3L4C4',
                             technology: { id: 'javascript-db-mongo-call' },
                             operation: { name: 'READ' },
                             method: { name: 'find' },
@@ -106,7 +106,7 @@ beforeEach(() => {
                           type: 'codeFragment',
                           data: {
                             location:
-                              'https://www.github.com/user/project/blob/master/js/app/app.js#L5C5L6C6',
+                              'https://www.github.com/user/project/tree/abc/js/app/app.js#L5C5L6C6',
                             technology: { id: 'javascript-db-redis-call' },
                             operation: { name: 'READ' },
                             method: { name: 'get' },
@@ -135,7 +135,7 @@ beforeEach(() => {
                 },
                 {
                   type: 'file',
-                  data: { location: 'https://www.github.com/user/project/blob/master/js/app.js' },
+                  data: { location: 'https://www.github.com/user/project/tree/abc/js/app.js' },
                   childrenNumber: 0,
                   descendantsNumber: 0,
                   width: 20,
@@ -156,7 +156,7 @@ beforeEach(() => {
         },
         {
           type: 'repository',
-          data: { location: 'https://www.github.com/user/projectClone/blob/master/' },
+          data: { location: 'https://www.github.com/user/projectClone/tree/abc/' },
           childrenNumber: 1,
           descendantsNumber: 7,
           width: 135,
@@ -166,7 +166,7 @@ beforeEach(() => {
           children: [
             {
               type: 'directory',
-              data: { location: 'https://www.github.com/user/projectClone/blob/master/js/' },
+              data: { location: 'https://www.github.com/user/projectClone/tree/abc/js/' },
               childrenNumber: 2,
               descendantsNumber: 6,
               width: 120,
@@ -176,9 +176,7 @@ beforeEach(() => {
               children: [
                 {
                   type: 'directory',
-                  data: {
-                    location: 'https://www.github.com/user/projectClone/blob/master/js/app/'
-                  },
+                  data: { location: 'https://www.github.com/user/projectClone/tree/abc/js/app/' },
                   childrenNumber: 1,
                   descendantsNumber: 4,
                   width: 77.5,
@@ -189,8 +187,7 @@ beforeEach(() => {
                     {
                       type: 'file',
                       data: {
-                        location:
-                          'https://www.github.com/user/projectClone/blob/master/js/app/app.js'
+                        location: 'https://www.github.com/user/projectClone/tree/abc/js/app/app.js'
                       },
                       childrenNumber: 3,
                       descendantsNumber: 3,
@@ -203,12 +200,12 @@ beforeEach(() => {
                           type: 'codeFragment',
                           data: {
                             location:
-                              'https://www.github.com/user/projectClone/blob/master/js/app/app.js#L1C1L2C2',
+                              'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L1C1L2C2',
                             technology: { id: 'javascript-api-express-call' },
                             operation: { name: 'READ' },
                             method: { name: 'get' },
-                            sample: { content: "'/user/:userId'" },
-                            concepts: [{ name: 'user' }],
+                            sample: { content: "'/doc/:docId'" },
+                            concepts: [{ name: 'doc' }],
                             heuristics: 'E1E2E3E4E5E6E7E8',
                             score: '8'
                           },
@@ -226,7 +223,7 @@ beforeEach(() => {
                           type: 'codeFragment',
                           data: {
                             location:
-                              'https://www.github.com/user/projectClone/blob/master/js/app/app.js#L3C3L4C4',
+                              'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L3C3L4C4',
                             technology: { id: 'javascript-db-mongo-call' },
                             operation: { name: 'READ' },
                             method: { name: 'find' },
@@ -249,7 +246,7 @@ beforeEach(() => {
                           type: 'codeFragment',
                           data: {
                             location:
-                              'https://www.github.com/user/projectClone/blob/master/js/app/app.js#L5C5L6C6',
+                              'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L5C5L6C6',
                             technology: { id: 'javascript-db-redis-call' },
                             operation: { name: 'READ' },
                             method: { name: 'get' },
@@ -278,9 +275,7 @@ beforeEach(() => {
                 },
                 {
                   type: 'file',
-                  data: {
-                    location: 'https://www.github.com/user/projectClone/blob/master/js/app.js'
-                  },
+                  data: { location: 'https://www.github.com/user/projectClone/tree/abc/js/app.js' },
                   childrenNumber: 0,
                   descendantsNumber: 0,
                   width: 20,
@@ -305,18 +300,291 @@ beforeEach(() => {
     }
   }).as('mockedRequest')
 
-  cy.intercept('post', '/technologies', {
+  cy.intercept('post', '/list/locations', {
+    statusCode: 200,
+    body: [
+      'https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1-L2C2',
+      'https://www.github.com/user/project/tree/abc/js/app/app.js#L3C3-L4C4',
+      'https://www.github.com/user/project/tree/abc/js/app/app.js#L5C5-L6C6',
+      'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L1C1-L2C2',
+      'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L3C3-L4C4',
+      'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L5C5-L6C6'
+    ]
+  }).as('mockedRequest')
+
+  cy.intercept('post', '/list/technologies', {
     statusCode: 200,
     body: ['javascript-api-express-call', 'javascript-db-mongo-call', 'javascript-db-redis-call']
   }).as('mockedRequest')
 
-  cy.intercept('post', '/operations', {
+  cy.intercept('post', '/list/operations', {
     statusCode: 200,
     body: ['READ']
   }).as('mockedRequest')
 
-  cy.intercept('post', '/concepts', {
+  cy.intercept('post', '/list/methods', {
+    statusCode: 200,
+    body: ['get', 'find']
+  }).as('mockedRequest')
+
+  cy.intercept('post', '/list/concepts', {
     statusCode: 200,
     body: ['user', 'doc']
   }).as('mockedRequest')
+
+  cy.intercept('post', '/metric/number/directories', {
+    statusCode: 200,
+    body: 4
+  }).as('mockedRequest')
+
+  cy.intercept('post', '/metric/number/files', {
+    statusCode: 200,
+    body: 4
+  }).as('mockedRequest')
+
+  cy.intercept('post', '/metric/number/code-fragments', {
+    statusCode: 200,
+    body: 6
+  }).as('mockedRequest')
+
+  cy.intercept('post', '/metric/number/concepts', {
+    statusCode: 200,
+    body: 2
+  }).as('mockedRequest')
+
+  cy.intercept('post', '/metric/breakdown/operations-technologies', {
+    statusCode: 200,
+    body: {
+      static: {
+        'javascript-api-express-call': {
+          CREATE: 0,
+          READ: 2,
+          UPDATE: 0,
+          DELETE: 0,
+          OTHER: 0,
+          TOTAL: 2
+        },
+        'javascript-db-mongo-call': {
+          CREATE: 0,
+          READ: 2,
+          UPDATE: 0,
+          DELETE: 0,
+          OTHER: 0,
+          TOTAL: 2
+        },
+        'javascript-db-redis-call': {
+          CREATE: 0,
+          READ: 2,
+          UPDATE: 0,
+          DELETE: 0,
+          OTHER: 0,
+          TOTAL: 2
+        }
+      }
+    }
+  }).as('mockedRequest')
+
+  cy.intercept('post', '/metric/breakdown/concepts', {
+    statusCode: 200,
+    body: {
+      user: 4,
+      doc: 2,
+      TOTAL: 6
+    }
+  }).as('mockedRequest')
+
+  cy.intercept('post', '/metric/loc', {
+    statusCode: 200,
+    body: 99
+  }).as('mockedRequest')
+
+  cy.intercept('post', '/metric/tir', {
+    statusCode: 200,
+    body: {
+      'javascript-api-express-call': 1,
+      'javascript-db-mongo-call': 1,
+      'javascript-db-redis-call': 1
+    }
+  }).as('mockedRequest')
+
+  cy.intercept('post', '/metric/cir', {
+    statusCode: 200,
+    body: {
+      user: 1,
+      doc: 1
+    }
+  }).as('mockedRequest')
+
+  cy.intercept('post', '/coupling/similarity/conceptual', {
+    statusCode: 200,
+    body: {
+      concepts: ['user', 'doc'],
+      matrix: [
+        [4, 0],
+        [0, 2]
+      ]
+    }
+  }).as('mockedRequest')
+
+  cy.intercept(
+    'post',
+    '/coupling/similarity/code-fragment/path/-/technology/-/operation/-/method/-/concepts/doc',
+    {
+      statusCode: 200,
+      body: [
+        {
+          location: 'https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2',
+          technology: { id: 'javascript-api-express-call' },
+          operation: { name: 'READ' },
+          method: { name: 'get' },
+          sample: { content: "'/doc/:docId'" },
+          concepts: [{ name: 'doc' }],
+          heuristics: 'E1E2E3E4E5E6E7E8',
+          score: '8'
+        }
+      ]
+    }
+  ).as('mockedRequest')
+
+  cy.intercept(
+    'post',
+    '/coupling/similarity/code-fragment/path/-/technology/-/operation/-/method/-/concepts/-',
+    {
+      statusCode: 200,
+      body: [
+        {
+          location: 'https://www.github.com/user/project/tree/abc/js/app/app.js#L1C1L2C2',
+          technology: {
+            id: 'javascript-api-express-call'
+          },
+          operation: {
+            name: 'READ'
+          },
+          method: {
+            name: 'get'
+          },
+          sample: {
+            content: "'/doc/:docId'"
+          },
+          concepts: [
+            {
+              name: 'doc'
+            }
+          ],
+          heuristics: 'E1E2E3E4E5E6E7E8',
+          score: '8'
+        },
+        {
+          location: 'https://www.github.com/user/project/tree/abc/js/app/app.js#L3C3L4C4',
+          technology: {
+            id: 'javascript-db-mongo-call'
+          },
+          operation: {
+            name: 'READ'
+          },
+          method: {
+            name: 'find'
+          },
+          sample: {
+            content: 'user {"user_id":userId}'
+          },
+          concepts: [
+            {
+              name: 'user'
+            }
+          ],
+          heuristics: 'M1M2M3M4M5M6',
+          score: '6'
+        },
+        {
+          location: 'https://www.github.com/user/project/tree/abc/js/app/app.js#L5C5L6C6',
+          technology: {
+            id: 'javascript-db-redis-call'
+          },
+          operation: {
+            name: 'READ'
+          },
+          method: {
+            name: 'get'
+          },
+          sample: {
+            content: 'USER_ID:userId'
+          },
+          concepts: [
+            {
+              name: 'user'
+            }
+          ],
+          heuristics: 'R1R2R3R4R5R6',
+          score: '6'
+        },
+        {
+          location: 'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L1C1L2C2',
+          technology: {
+            id: 'javascript-api-express-call'
+          },
+          operation: {
+            name: 'READ'
+          },
+          method: {
+            name: 'get'
+          },
+          sample: {
+            content: "'/doc/:docId'"
+          },
+          concepts: [
+            {
+              name: 'doc'
+            }
+          ],
+          heuristics: 'E1E2E3E4E5E6E7E8',
+          score: '8'
+        },
+        {
+          location: 'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L3C3L4C4',
+          technology: {
+            id: 'javascript-db-mongo-call'
+          },
+          operation: {
+            name: 'READ'
+          },
+          method: {
+            name: 'find'
+          },
+          sample: {
+            content: 'user {"user_id":userId}'
+          },
+          concepts: [
+            {
+              name: 'user'
+            }
+          ],
+          heuristics: 'M1M2M3M4M5M6',
+          score: '6'
+        },
+        {
+          location: 'https://www.github.com/user/projectClone/tree/abc/js/app/app.js#L5C5L6C6',
+          technology: {
+            id: 'javascript-db-redis-call'
+          },
+          operation: {
+            name: 'READ'
+          },
+          method: {
+            name: 'get'
+          },
+          sample: {
+            content: 'USER_ID:userId'
+          },
+          concepts: [
+            {
+              name: 'user'
+            }
+          ],
+          heuristics: 'R1R2R3R4R5R6',
+          score: '6'
+        }
+      ]
+    }
+  ).as('mockedRequest')
 })

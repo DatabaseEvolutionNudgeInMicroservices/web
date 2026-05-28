@@ -1,6 +1,5 @@
 <script>
 // Helpers
-
 import { LOADING } from '@/helpers/Text.helper'
 
 export default {
@@ -12,6 +11,7 @@ export default {
   },
   data() {
     return {
+      // Texts.
       LOADING
     }
   }
@@ -19,9 +19,7 @@ export default {
 </script>
 
 <template>
-  <div v-if="visibility" class="spinner-border" role="status">
+  <div v-if="visibility" class="spinner-border top" role="status">
     <span class="visually-hidden">{{ LOADING }}</span>
   </div>
 </template>
-
-<style scoped></style>

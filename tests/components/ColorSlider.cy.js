@@ -13,7 +13,7 @@ describe('Color slider', () => {
     cy.mount(ColorSlider, { props: { label: 'Color' } })
 
     // Then
-    cy.get('.label').contains('Color').should('be.visible')
+    cy.get('.color-slider-label').contains('Color').should('be.visible')
   })
 
   it('shows the default color', () => {
@@ -21,7 +21,7 @@ describe('Color slider', () => {
     cy.mount(ColorSlider, { props: { label: 'Color' } })
 
     // Then
-    cy.get('.color-display')
+    cy.get('.color-slider-display')
       .should('have.css', 'background-color')
       .and('contain', 'rgb(255, 255, 255)')
   })
@@ -31,10 +31,10 @@ describe('Color slider', () => {
     cy.mount(ColorSlider, { props: { label: 'Color' } })
 
     // When
-    cy.get('.color-slider').invoke('val', 100).trigger('input')
+    cy.get('.color-slider-input').invoke('val', 100).trigger('input')
 
     // Then
-    cy.get('.color-display')
+    cy.get('.color-slider-display')
       .should('have.css', 'background-color')
       .and('contain', 'rgb(170, 255, 128)')
   })
@@ -44,10 +44,10 @@ describe('Color slider', () => {
     cy.mount(ColorSlider, { props: { label: 'Color' } })
 
     // When
-    cy.get('.color-slider').invoke('val', -1).trigger('input')
+    cy.get('.color-slider-input').invoke('val', -1).trigger('input')
 
     // Then
-    cy.get('.color-display')
+    cy.get('.color-slider-display')
       .should('have.css', 'background-color')
       .and('contain', 'rgb(255, 255, 255)')
   })

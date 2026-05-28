@@ -1,11 +1,21 @@
-// Layout
+// Demos
 
-export const MARGIN = 7.5
-export const SIZE = 20
+const demo = (file) => `${import.meta.env.BASE_URL}demo/${encodeURIComponent(file)}`
 
-// Images
+export const DEMO_TREEMAP = demo('Static Analysis Report Overleaf May 8th 2026.json')
+export const DEMO_TIMELINE = demo('Dynamic Analysis Report Overleaf March 18th 2025.json')
+export const DEMO_ANIMATED_HEAT_TREEMAP = demo('Dynamic Analysis Report Overleaf March 18th 2025.json')
+export const DEMO_EVOLUTIONARY_TREEMAP = demo('Static Analysis Report Overleaf May 8th 2026.json')
+export const DEMO_COMPARISON_TREEMAP_1 = demo('Static Analysis Report Overleaf August 5th 2021 AM.json')
+export const DEMO_COMPARISON_TREEMAP_2 = demo('Static Analysis Report Overleaf May 8th 2026.json')
+export const DEMO_DIFFERENCE_TREEMAP_1 = demo('Static Analysis Report Overleaf August 5th 2021 PM.json')
+export const DEMO_DIFFERENCE_TREEMAP_2 = demo('Static Analysis Report Overleaf May 8th 2026.json')
+
+// SVG
 
 export const SVG_NS = 'http://www.w3.org/2000/svg'
+
+// Images
 
 export const IMAGES = {
   CREATE:
@@ -19,24 +29,75 @@ export const IMAGES = {
     '<svg width="96" height="96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><g transform="translate(-592 -312)"><path d="M615 360.5C615 365.194 611.194 369 606.5 369 601.806 369 598 365.194 598 360.5 598 355.806 601.806 352 606.5 352 611.194 352 615 355.806 615 360.5Z"/><path d="M648 360.5C648 365.194 644.194 369 639.5 369 634.806 369 631 365.194 631 360.5 631 355.806 634.806 352 639.5 352 644.194 352 648 355.806 648 360.5Z"/><path d="M681 360.5C681 365.194 677.194 369 672.5 369 667.806 369 664 365.194 664 360.5 664 355.806 667.806 352 672.5 352 677.194 352 681 355.806 681 360.5Z"/></g></svg>'
 }
 
+export const getImage = (operation, size) => {
+  let svg = IMAGES[operation]
+  if (!svg) {
+    svg = ''
+  }
+  const translateMatch = svg.match(/transform="translate\(([^)]+)\)"/) // Extracts transform translate values.
+  let viewBox = 'viewBox="0 0 96 96"'
+  if (translateMatch) {
+    const [x, y] = translateMatch[1].split(' ').map((val) => Math.abs(parseInt(val)))
+    viewBox = `viewBox="${x} ${y} 96 96"`
+  }
+  svg = svg.replace(/transform="translate\([^"]*\)"/g, '') // Remove transform attribute and set width, height, and viewBox.
+  svg = svg.replace(/width="[^"]*"/g, `width="${size}"`)
+  svg = svg.replace(/height="[^"]*"/g, `height="${size}"`)
+  svg = svg.replace(/<svg([^>]*)>/g, `<svg$1 ${viewBox}>`)
+  return svg
+}
+
 export const IMAGE_SHIFT = 2.5
 export const IMAGE_SCALE = '0.16'
 export const OPAQUE = '0.05'
 export const NO_OPAQUE = '1'
+
+// Colors
+
+export const DEFAULT_COLOR_FILE = '#FFFFFF'
+export const DEFAULT_OPACITY_FILE = '0.25'
+export const DEFAULT_COLOR_TREEMAP = '#000000'
+export const DEFAULT_OPACITY_TREEMAP = '0.05'
+export const DEFAULT_COLOR_CODE_FRAGMENT = '#FFFFFF'
+export const DEFAULT_OPACITY_CODE_FRAGMENT = '1'
+export const CO_CHANGED_OPACITY_FILE = '1'
+export const CHANGE_OPACITY = '1'
+
+// Zoom
+
 export const ZOOM_FACTOR = 0.1
 export const MIN_ZOOM = 0.1
 export const MAX_ZOOM = 2.0
 
-// Colors
+// Downloading
 
-export const DEFAULT_COLOR = '#FFFFFF'
-export const DEFAULT_COLOR_TREEMAP = '#000000'
-export const DEFAULT_OPACITY_TREEMAP = '0.05'
-export const DEFAULT_COLOR_REPOSITORY = '#000000'
-export const DEFAULT_OPACITY_REPOSITORY = '0.05'
-export const DEFAULT_COLOR_DIRECTORY = '#000000'
-export const DEFAULT_OPACITY_DIRECTORY = '0.05'
-export const DEFAULT_COLOR_FILE = '#FFFFFF'
-export const DEFAULT_OPACITY_FILE = '0.25'
-export const DEFAULT_COLOR_CODE_FRAGMENT = '#FFFFFF'
-export const DEFAULT_OPACITY_CODE_FRAGMENT = '1'
+export const GIT_URL_REGEX = /^https:\/\/(github|gitlab)\.com\/([^/]+)\/([^/]+)\/tree\/([^/]+)$/
+
+// Timeline
+
+export const MAX_FRAMES_INIT = 100 // The maximum number of frames to be displayed in the timeline when the analysis report is loaded.
+export const SECOND_IN_MS = 1000
+export const MINUTE_IN_MS = SECOND_IN_MS * 60
+export const HOUR_IN_MS = MINUTE_IN_MS * 60
+
+// Treemap
+
+// Animated Heat Treemap
+
+export const DEFAULT_FPS = 60
+export const ANIMATION_SPEEDS = [1, 2, 5, 10]
+export const DEFAULT_FF_THRESHOLD = 300000 // Default threshold (in ms) for fast-forwarding.
+export const BASE_FF_TIME_MS = 3000 // Fast-forwarding time (replacing the time difference between two frames by this value, in ms).
+export const DEFAULT_LINES_TIME_LIMIT = 5 // Default time limit (in seconds) for displaying lines (call sequence).
+export const PREVIOUS_NEXT_CALLS_COUNT = 3
+
+// Evolutionary Treemap
+
+export const MIN_CHANGE_COLOR = '#70b9ff'
+export const MAX_CHANGE_COLOR = '#0049b5'
+
+// Difference Treemap
+
+export const ADDED_COLOR = '#309e53'
+export const DELETED_COLOR = '#c7322e'
+export const MODIFIED_COLOR = '#f6e248'

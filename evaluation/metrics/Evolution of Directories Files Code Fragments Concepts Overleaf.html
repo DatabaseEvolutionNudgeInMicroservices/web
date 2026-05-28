@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolution of Directories, Files, Code Fragments and Concepts in Overleaf</title>
+  <script src='https://cdn.plot.ly/plotly-3.5.1.min.js'></script>
+</head>
+<body>
+<div id="chart"></div>
+<script>
+  var directoriesTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [562, 579, 610, 758, 858, 847, 840, 850, 864, 898],
+    type: 'scatter',
+    marker: {
+      color: '#9c27b0'
+    },
+    name: '# directories'
+  }
+
+  var filesTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [1701, 1849, 2035, 2592, 3153, 3240, 3406, 3646, 3867, 4108],
+    type: 'scatter',
+    marker: {
+      color: '#8bc34a'
+    },
+    name: '# files'
+  }
+
+  var codeFragmentsTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [1398, 1476, 1596, 1913, 1949, 1931, 2012, 2223, 2487, 2592],
+    type: 'scatter',
+    marker: {
+      color: '#03a9f4'
+    },
+    name: '# code fragments'
+  }
+
+  var conceptsTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [72, 74, 67, 71, 74, 77, 76, 78, 78, 81],
+    type: 'scatter',
+    marker: {
+      color: '#ff5722'
+    },
+    name: '# concepts'
+  }
+
+  var data = [directoriesTrace, filesTrace, codeFragmentsTrace, conceptsTrace]
+
+  var layout = {
+
+    width: 500,
+    height: 500,
+    margin: {
+      b: 150
+    },
+
+    showlegend: true,
+
+    xaxis: {
+      title: {
+        text: ''
+      }
+    },
+
+    yaxis: {
+      title: {
+        text: ''
+      }
+    }
+  }
+
+  Plotly.newPlot('chart', data, layout)
+</script>
+</body>
+</html>

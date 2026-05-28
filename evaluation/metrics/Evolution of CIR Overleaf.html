@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolution of Top 5 CIR in Overleaf</title>
+  <script src='https://cdn.plot.ly/plotly-3.5.1.min.js'></script>
+</head>
+<body>
+<div id="chart"></div>
+<script>
+  var cirProjectTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [3.94, 4.00, 3.93, 4.05, 3.04, 2.99, 2.94, 3.18, 3.23, 3.12],
+    type: 'scatter',
+    marker: {
+      color: '#07ffa6'
+    },
+    name: 'project'
+  }
+
+  var cirUserTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [2.70, 2.60, 3.00, 2.39, 2.03, 2.07, 2.03, 2.08, 2.17, 2.04],
+    type: 'scatter',
+    marker: {
+      color: '#673ab7'
+    },
+    name: 'user'
+  }
+
+  var cirDocTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [2.06, 2.11, 2.01, 1.66, 1.36, 1.27, 1.15, 1.15, 1.24, 1.19],
+    type: 'scatter',
+    marker: {
+      color: '#fe7f9b'
+    },
+    name: 'doc'
+  }
+
+  var cirHistoryTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [null, null, null, 0.54, 0.44, 0.43, 0.41, 0.47, 0.44, 0.49],
+    type: 'scatter',
+    marker: {
+      color: '#ffc107'
+    },
+    name: 'history'
+  }
+
+  var cirMessageTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [0.76, 0.65, 0.64, null, null, null, null, null],
+    type: 'scatter',
+    marker: {
+      color: '#03a9f4'
+    },
+    name: 'message'
+  }
+
+  var cirDocHistoryTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [0.59, 0.76, 0.69, 0.5, null, null, null, null],
+    type: 'scatter',
+    marker: {
+      color: '#f44336'
+    },
+    name: 'doc history'
+  }
+
+  var cirOlPreventCompileLoadHistoryTrace = {
+    x: ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026'],
+    y: [null, null, null, null, 0.6, 0.71, 0.68, 0.63, 0.8, 0.78],
+    type: 'scatter',
+    marker: {
+      color: '#a52a2a'
+    },
+    name: 'ol prevent compile load'
+  }
+
+  var data = [cirProjectTrace, cirUserTrace, cirDocTrace, cirMessageTrace, cirDocHistoryTrace, cirHistoryTrace, cirOlPreventCompileLoadHistoryTrace]
+
+  var layout = {
+
+    width: 750,
+    height: 500,
+    margin: {
+      b: 150
+    },
+
+    showlegend: true,
+
+    xaxis: {
+      title: {
+        text: ''
+      }
+    },
+
+    yaxis: {
+      title: {
+        text: 'CIR (%)'
+      }
+    }
+  }
+
+  Plotly.newPlot('chart', data, layout)
+</script>
+</body>
+</html>

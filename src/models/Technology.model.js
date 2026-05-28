@@ -1,0 +1,59 @@
+// Error
+import { INPUT_INCORRECTLY_FORMATTED } from '@/helpers/Text.helper.js'
+import { BadFormat } from '@/errors/BadFormat.error.js'
+
+/**
+ * @overview This class represents a technology.
+ */
+export class Technology {
+  /**
+   * Instantiates a technology.
+   */
+  constructor(id) {
+    this.setId(id)
+  }
+
+  setId(id) {
+    if (id !== null && id !== undefined && id.length > 0) {
+      this.id = id
+    } else {
+      throw new BadFormat(INPUT_INCORRECTLY_FORMATTED)
+    }
+  }
+
+  getId() {
+    return this.id
+  }
+
+  /**
+   * Revives a Technology object.
+   * @param object {Object} The given JavaScript object.
+   * @return {Technology} The related Technology object.
+   * @throws {Error} In the case of an invalid object format.
+   */
+  static revive(object) {
+    // eslint-disable-next-line no-useless-catch
+    try {
+      if (
+        object !== null &&
+        object !== undefined &&
+        object.hasOwnProperty('id') &&
+        object.id !== null &&
+        object.id !== undefined
+      ) {
+        return new Technology(object.id)
+      } else {
+        throw new BadFormat(INPUT_INCORRECTLY_FORMATTED)
+      }
+    } catch (error) {
+      throw error
+    }
+  }
+
+  /**
+   * Prints the object in a human-readable way (JSON).
+   */
+  toString() {
+    return JSON.stringify(this)
+  }
+}

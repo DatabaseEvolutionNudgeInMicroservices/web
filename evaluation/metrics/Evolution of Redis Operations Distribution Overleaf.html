@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolution of Redis Operations Distribution in Overleaf</title>
+
+  <script src="https://cdn.plot.ly/plotly-3.5.1.min.js"></script>
+</head>
+
+<body>
+<div id="chart"></div>
+
+<script>
+  const dates = ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026']
+
+  const operationColors = {
+    CREATE: '#2ecc71',
+    READ: '#29b6f6',
+    UPDATE: '#ffa726',
+    DELETE: '#ef5350',
+    OTHER: '#616161'
+  }
+
+  const technologyPatterns = {
+    ExpressJS: '/',
+    MongoDB: 'x',
+    Redis: '+'
+  }
+
+  function createTrace(technology, operation, values) {
+    return {
+      x: dates,
+      y: values,
+
+      name: `${technology} - ${operation}`,
+
+      type: 'bar',
+
+      offsetgroup: technology,
+      legendgroup: technology,
+
+      marker: {
+        color: operationColors[operation],
+
+        pattern: {
+          shape: technologyPatterns[technology],
+          fgcolor: 'rgba(255,255,255,0.9)',
+          bgcolor: operationColors[operation],
+          size: 5,
+          solidity: 0.25
+        },
+
+        line: {
+          color: '#fff',
+          width: 1
+        }
+      }
+    }
+  }
+
+  const data = [
+
+    /*
+      Redis
+    */
+    createTrace('Redis', 'OTHER', [22.8, 20.4, 20.5, 20.2, 18, 16.0, 18.7, 18.3, 15.9, 15.2]),
+    createTrace('Redis', 'CREATE', [4, 3.6, 3.8, 3.5, 2.8, 2.4, 2.3, 2.3, 3.7, 3.5]),
+    createTrace('Redis', 'READ', [41.1, 44, 37.7, 37.6, 34.5, 31.2, 32.9, 32.4, 32.5, 32.0]),
+    createTrace('Redis', 'UPDATE', [21, 20.4, 25.1, 24.1, 31.6, 38.6, 32.7, 33.8, 36.2, 38.9]),
+    createTrace('Redis', 'DELETE', [11.2, 11.6, 13, 14.5, 13, 11.9, 13.4, 13.2, 11.7, 10.4])
+
+  ]
+
+  const layout = {
+
+    width: 500,
+    height: 500,
+    margin: {
+      b: 150
+    },
+
+    title: 'Evolution of Redis Operations Distribution in Overleaf',
+
+    barmode: 'stack',
+
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff',
+
+    xaxis: {
+      title: { text: '' },
+      gridcolor: '#e0e0e0'
+    },
+
+    yaxis: {
+      title: { text: '% Operations' },
+      gridcolor: '#e0e0e0'
+    },
+
+    legend: {
+      orientation: 'v'
+    },
+
+    showlegend: true,
+
+    font: {
+      family: 'Arial, sans-serif',
+      size: 14,
+      color: '#212121'
+    }
+  }
+
+  Plotly.newPlot('chart', data, layout)
+</script>
+</body>
+</html>

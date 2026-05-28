@@ -1,32 +1,67 @@
 <script>
-// Components
+// Libraries
+import { nextTick } from 'vue'
 
+// Components
 import ColorSlider from '@/components/ColorSlider.component.vue'
+import ConceptsMatrix from '@/components/ConceptsMatrix.component.vue'
+import ZoomControls from '@/components/ZoomControls.component.vue'
+import ToolTip from '@/components/ToolTip.component.vue'
+import Multiselect from '@vueform/multiselect'
+import '@vueform/multiselect/themes/default.css'
 
 // Helpers
-
-import { nextTick } from 'vue'
-import {
-  SVG_NS,
-  IMAGES,
-  IMAGE_SHIFT,
-  IMAGE_SCALE,
-  OPAQUE,
-  NO_OPAQUE,
-  ZOOM_FACTOR,
-  MIN_ZOOM,
-  MAX_ZOOM
-} from '@/helpers/Constants.helper'
 import { DataMapper } from '@/helpers/DataMapper.helper'
+import {
+  IMAGE_SCALE,
+  IMAGE_SHIFT,
+  IMAGES,
+  MAX_ZOOM,
+  MIN_ZOOM,
+  NO_OPAQUE,
+  OPAQUE,
+  SVG_NS,
+  ZOOM_FACTOR
+} from '@/helpers/Constants.helper'
+import {
+  CODE_FRAGMENTS_NUMBER,
+  CONCEPTS_NUMBER,
+  DIRECTORIES_NUMBER,
+  FILES_NUMBER,
+  FILTERING,
+  LOC,
+  METRICS,
+  NO_DATA,
+  SELECT_CONCEPTS,
+  SELECT_LOCATION,
+  SELECT_METHOD,
+  SELECT_OPERATION,
+  SELECT_TECHNOLOGY,
+  STATIC,
+  TECHNOLOGIES_OPERATIONS_BREAKDOWN,
+  TOP_10_CONCEPT_CO_OCCURRENCE
+} from '@/helpers/Text.helper.js'
+import TwoDimensionsBreakdownComponent from '@/components/TwoDimensionsBreakdown.component.vue'
+import OneDimensionBreakdownComponent from '@/components/OneDimensionBreakdown.component.vue'
 
 export default {
   components: {
+    Multiselect,
+    OneDimensionBreakdownComponent,
+    TwoDimensionsBreakdownComponent,
+    ConceptsMatrix,
+    ToolTip,
+    ZoomControls,
     ColorSlider
   },
   props: {
     treemap: {
       type: Object,
       required: true
+    },
+    locations: {
+      type: Array
+      //required: true
     },
     technologies: {
       type: Array
@@ -36,7 +71,55 @@ export default {
       type: Array
       //required: true
     },
+    methods: {
+      type: Array
+      //required: true
+    },
     concepts: {
+      type: Array
+      //required: true
+    },
+    conceptsMatrix: {
+      type: Object
+      //required: true
+    },
+    directoriesNumber: {
+      type: Number
+      //required: true
+    },
+    filesNumber: {
+      type: Number
+      //required: true
+    },
+    codeFragmentsNumber: {
+      type: Number
+      //required: true
+    },
+    conceptsNumber: {
+      type: Number
+      //required: true
+    },
+    operationsTechnologiesBreakdown: {
+      type: Object
+      //required: true
+    },
+    conceptsBreakdown: {
+      type: Object
+      //required: true
+    },
+    loc: {
+      type: Number
+      //required: true
+    },
+    tir: {
+      type: Object
+      //required: true
+    },
+    cir: {
+      type: Object
+      //required: true
+    },
+    filteredCodeFragments: {
       type: Array
       //required: true
     }
@@ -45,6 +128,13 @@ export default {
     treemap: {
       handler(newTreemap) {
         this.updateTreemap(newTreemap)
+      },
+      immediate: true,
+      deep: true
+    },
+    locations: {
+      handler(newLocations) {
+        this.updateLocations(newLocations)
       },
       immediate: true,
       deep: true
@@ -63,9 +153,94 @@ export default {
       immediate: true,
       deep: true
     },
+    methods: {
+      handler(newMethods) {
+        this.updateMethods(newMethods)
+      },
+      immediate: true,
+      deep: true
+    },
     concepts: {
       handler(newConcepts) {
         this.updateConcepts(newConcepts)
+      },
+      immediate: true,
+      deep: true
+    },
+    conceptsMatrix: {
+      handler(newMatrix) {
+        this.updateConceptsMatrix(newMatrix)
+      },
+      immediate: true,
+      deep: true
+    },
+    directoriesNumber: {
+      handler(newNumber) {
+        this.updateDirectoriesNumber(newNumber)
+      },
+      immediate: true,
+      deep: true
+    },
+    filesNumber: {
+      handler(newNumber) {
+        this.updateFilesNumber(newNumber)
+      },
+      immediate: true,
+      deep: true
+    },
+    codeFragmentsNumber: {
+      handler(newNumber) {
+        this.updateCodeFragmentsNumber(newNumber)
+      },
+      immediate: true,
+      deep: true
+    },
+    conceptsNumber: {
+      handler(newNumber) {
+        this.updateConceptsNumber(newNumber)
+      },
+      immediate: true,
+      deep: true
+    },
+    operationsTechnologiesBreakdown: {
+      handler(newBreakdown) {
+        this.updateOperationsTechnologiesBreakdown(newBreakdown)
+      },
+      immediate: true,
+      deep: true
+    },
+    conceptsBreakdown: {
+      handler(newBreakdown) {
+        this.updateConceptsBreakdown(newBreakdown)
+      },
+      immediate: true,
+      deep: true
+    },
+    loc: {
+      handler(newMetric) {
+        this.updateLoC(newMetric)
+      },
+      immediate: true,
+      deep: true
+    },
+    tir: {
+      handler(newMetric) {
+        this.updateTIR(newMetric)
+      },
+      immediate: true,
+      deep: true
+    },
+    cir: {
+      handler(newMetric) {
+        this.updateCIR(newMetric)
+      },
+      immediate: true,
+      deep: true
+    },
+    filteredCodeFragments: {
+      handler(newFilteredCodeFragments) {
+        this.updateFilteredCodeFragments(newFilteredCodeFragments)
+        this.onHighlight(newFilteredCodeFragments)
       },
       immediate: true,
       deep: true
@@ -76,30 +251,6 @@ export default {
     const dataMapper = new DataMapper()
     return {
       dataMapper
-    }
-  },
-  data() {
-    return {
-      // Model
-      treemapObject: null,
-      technologiesList: [],
-      operationsList: [],
-      conceptsList: [],
-      // View
-      settingsVisibility: false,
-      treemapDiv: null,
-      treemapSVG: null,
-      treemapScale: 1,
-      treemapPanX: 0,
-      treemapPanY: 0,
-      treemapIsPanning: false,
-      treemapStartX: 0,
-      treemapStartY: 0,
-      shapeClicked: null,
-      toolTipVisibility: false,
-      toolTipX: 0,
-      toolTipY: 0,
-      toolTipText: ''
     }
   },
   mounted() {
@@ -114,21 +265,123 @@ export default {
       this.renderTreemap()
     })
   },
+  data() {
+    return {
+      // Model: Treemap.
+      treemapObject: null,
+      // Model: Locations.
+      rawLocationsList: [],
+      locationSelected: null,
+      // Model: Technologies.
+      technologiesList: [],
+      technologySelected: null,
+      // Model: Operations.
+      operationsList: [],
+      operationSelected: null,
+      // Model: Methods.
+      methodsList: [],
+      methodSelected: null,
+      // Model: Concepts.
+      conceptsList: [],
+      conceptSelected: null,
+      conceptsSelected: [],
+      // Model: Concepts matrix.
+      conceptsMatrixObject: null,
+      // Model: Metrics
+      directoriesNumberValue: 0,
+      filesNumberValue: 0,
+      codeFragmentsNumberValue: 0,
+      conceptsNumberValue: 0,
+      operationsTechnologiesBreakdownObject: null,
+      conceptsBreakdownObject: null,
+      locValue: 0,
+      tirObject: 0,
+      cirObject: 0,
+      // Model: Code Fragments.
+      filteredCodeFragmentsList: [],
+
+      // View: Settings.
+      settingsVisibility: false,
+      // View: Metrics.
+      metricsVisibility: false,
+      // View: Treemap.
+      treemapDiv: null,
+      treemapSVG: null,
+      treemapSVGShapeClicked: null,
+      // View: Zoom.
+      treemapScale: 1,
+      treemapPanX: 0,
+      treemapPanY: 0,
+      treemapIsPanning: false,
+      treemapStartX: 0,
+      treemapStartY: 0,
+      // View: Tool tip.
+      toolTipVisibility: false,
+      toolTipX: 0,
+      toolTipY: 0,
+      toolTipHtml: '',
+
+      // Texts.
+      SELECT_LOCATION,
+      SELECT_TECHNOLOGY,
+      SELECT_OPERATION,
+      SELECT_METHOD,
+      SELECT_CONCEPTS,
+      FILTERING,
+      NO_DATA,
+      METRICS,
+      DIRECTORIES_NUMBER,
+      FILES_NUMBER,
+      CODE_FRAGMENTS_NUMBER,
+      CONCEPTS_NUMBER,
+      LOC,
+      STATIC,
+      TOP_10_CONCEPT_CO_OCCURRENCE,
+      TECHNOLOGIES_OPERATIONS_BREAKDOWN
+    }
+  },
+  computed: {
+    locationsList() {
+      if (this.rawLocationsList && this.rawLocationsList.length > 0) {
+        const seen = new Set()
+        const result = []
+        this.rawLocationsList.forEach((l) => {
+          let locationId = l.substring(0, l.indexOf('#'))
+          let locationObject = this.dataMapper.extractLocation(l)
+          let locationPath = locationObject.getPath()
+          if (!seen.has(locationPath)) {
+            seen.add(locationPath)
+            result.push({
+              label: locationPath,
+              value: locationId
+            })
+          }
+        })
+        return result
+      } else {
+        return []
+      }
+    }
+  },
   methods: {
     /**
-     * Updates the given treemap with the given new one.
-     * @param newTreemap The given new treemap.
+     * Data.
      */
     updateTreemap(newTreemap) {
       if (newTreemap) {
         // Treemap
 
-        this.treemapObject = this.dataMapper.revive(newTreemap)
+        this.treemapObject = this.dataMapper.reviveTreemap(newTreemap)
 
         // View
 
         this.preRenderTreemap()
         this.renderTreemap()
+      }
+    },
+    updateLocations(newLocations) {
+      if (newLocations) {
+        this.rawLocationsList = newLocations.filter((l) => l.includes('#')) // Filters only locations concerning code fragments.
       }
     },
     updateTechnologies(newTechnologies) {
@@ -141,18 +394,101 @@ export default {
         this.operationsList = newOperations
       }
     },
+    updateMethods(newMethods) {
+      if (newMethods) {
+        this.methodsList = newMethods
+      }
+    },
     updateConcepts(newConcepts) {
       if (newConcepts) {
         this.conceptsList = newConcepts
       }
     },
+    updateConceptsMatrix(newConceptsMatrix) {
+      if (newConceptsMatrix) {
+        this.conceptsMatrixObject = newConceptsMatrix
+      }
+    },
+    updateDirectoriesNumber(newNumber) {
+      if (newNumber) {
+        this.directoriesNumberValue = newNumber
+      }
+    },
+    updateFilesNumber(newNumber) {
+      if (newNumber) {
+        this.filesNumberValue = newNumber
+      }
+    },
+    updateCodeFragmentsNumber(newNumber) {
+      if (newNumber) {
+        this.codeFragmentsNumberValue = newNumber
+      }
+    },
+    updateConceptsNumber(newNumber) {
+      if (newNumber) {
+        this.conceptsNumberValue = newNumber
+      }
+    },
+    updateOperationsTechnologiesBreakdown(newBreakdown) {
+      if (newBreakdown) {
+        this.operationsTechnologiesBreakdownObject = newBreakdown
+      }
+    },
+    updateConceptsBreakdown(newBreakdown) {
+      if (newBreakdown) {
+        this.conceptsBreakdownObject = newBreakdown
+      }
+    },
+    updateLoC(newMetric) {
+      if (newMetric) {
+        this.locValue = newMetric
+      }
+    },
+    updateCIR(newMetric) {
+      if (newMetric) {
+        this.cirObject = Object.fromEntries(
+          Object.keys(newMetric)
+            .map((key) => {
+              let percentage = (newMetric[key] * 100).toFixed(2)
+              let count = (newMetric[key] * this.filesNumberValue).toFixed(0)
+              if (percentage !== '0.00') {
+                return [key, count + ' (' + percentage + '%)']
+              } else {
+                return null
+              }
+            })
+            .filter((value) => value) // Removes null.
+        )
+        if (Object.keys(this.cirObject).length < Object.keys(newMetric).length) {
+          this.cirObject['...'] = null
+        }
+      }
+    },
+    updateTIR(newMetric) {
+      if (newMetric) {
+        this.tirObject = Object.fromEntries(
+          Object.keys(newMetric).map((key) => [
+            key,
+            (newMetric[key] * this.filesNumberValue).toFixed(0) +
+              ' (' +
+              (newMetric[key] * 100).toFixed(2) +
+              '%)'
+          ])
+        )
+      }
+    },
+    updateFilteredCodeFragments(newFilteredCodeFragments) {
+      if (newFilteredCodeFragments) {
+        this.filteredCodeFragmentsList = newFilteredCodeFragments
+      }
+    },
+    /**
+     * Rendering.
+     */
     preRenderTreemap() {
       if (this.treemapDiv && this.treemapObject) {
         this.treemapScale = MIN_ZOOM
-        let recalibrateSVGxyTox0y0 = -(this.treemapObject.getWidth() / 2)
-        let shiftToMiddleOfDiv = this.treemapDiv.offsetWidth / 2
-        this.treemapPanX = recalibrateSVGxyTox0y0 + shiftToMiddleOfDiv // Margin left
-        this.treemapPanY = 10 // Margin top
+        this.getCalibration(true, false)
       }
     },
     renderTreemap() {
@@ -169,15 +505,21 @@ export default {
       }
     },
     /**
-     * Converts to SVG all the given model.
+     * SVG.
      */
     toSVG() {
       this.treemapSVG = document.createElementNS(SVG_NS, 'svg')
+      const width = this.treemapObject.getWidth()
+      const height = this.treemapObject.getHeight()
+      this.treemapSVG.setAttribute('xmlns', SVG_NS)
+      this.treemapSVG.setAttribute('width', width)
+      this.treemapSVG.setAttribute('height', height)
+      this.treemapSVG.setAttribute('viewBox', `0 0 ${width} ${height}`)
       this.toSVGShape(this.treemapSVG, this.treemapObject, 0, 0)
-      this.treemapSVG.style.width = this.treemapObject.getWidth()
-      this.treemapSVG.style.height = this.treemapObject.getHeight()
+      this.treemapSVG.style.width = `${width}px`
+      this.treemapSVG.style.height = `${height}px`
       this.treemapSVG.style.position = 'absolute'
-      this.treemapSVG.style.transformOrigin = 'top'
+      this.treemapSVG.style.transformOrigin = `0px 0px`
       this.treemapSVG.style.transform = `translate(${this.treemapPanX}px, ${this.treemapPanY}px) scale(${this.treemapScale})`
       this.treemapDiv.appendChild(this.treemapSVG)
     },
@@ -218,17 +560,17 @@ export default {
       shape.setAttribute('childrenNumber', item.getChildrenNumber())
       shape.setAttribute('descendantsNumber', item.getDescendantsNumber())
 
-      // Tooltip
+      // Tool tip
       shape.addEventListener('mouseover', (event) => {
         if (item.getType() !== 'treemap') {
           shape.classList.add('hovered')
         }
-        this.showToolTip(event, item)
+        this.onShowToolTip(event, item)
       })
-      shape.addEventListener('mousemove', (event) => this.moveToolTip(event, item))
+      shape.addEventListener('mousemove', (event) => this.onMoveToolTip(event, item))
       shape.addEventListener('mouseout', () => {
         shape.classList.remove('hovered')
-        this.hideToolTip()
+        this.onHideToolTip()
       })
       let self = this
       let clickStartDatetime
@@ -236,21 +578,21 @@ export default {
         clickStartDatetime = Date.now()
       })
       shape.addEventListener('mouseup', () => {
-        // Distinguish a short-time click (access the location) to a holding click (moving the canva).
+        // Distinguishes a short-time click (access the location) to a holding click (moving the canva).
         if (clickStartDatetime && Date.now() - clickStartDatetime <= 200) {
-          // Navigate to the destination
+          // Navigates to the destination.
           if (item.getData()) {
             window.open(item.getData().location, '_blank')
 
-            // Keep in memory the last click
-            if (self.shapeClicked) {
-              self.shapeClicked.classList.remove('clicked')
+            // Keeps in memory the last click.
+            if (self.treemapSVGShapeClicked) {
+              self.treemapSVGShapeClicked.classList.remove('clicked')
             }
-            self.shapeClicked = shape
-            self.shapeClicked.classList.add('clicked')
+            self.treemapSVGShapeClicked = shape
+            self.treemapSVGShapeClicked.classList.add('clicked')
           } else {
-            self.shapeClicked.classList.remove('clicked')
-            self.shapeClicked = null
+            self.treemapSVGShapeClicked.classList.remove('clicked')
+            self.treemapSVGShapeClicked = null
           }
         }
       })
@@ -308,11 +650,11 @@ export default {
       const shape = document.createElementNS(SVG_NS, 'circle')
       const image = document.createElementNS(SVG_NS, 'g')
       shape.setAttribute('cx', x + item.getWidth() / 2)
-      shape.setAttribute('cy', y + item.getWidth() / 2)
+      shape.setAttribute('cy', y + item.getHeight() / 2)
       shape.setAttribute('r', item.getWidth() / 2)
       shape.setAttribute('fill', item.getColor())
       shape.setAttribute('fill-opacity', item.getOpacity())
-      image.innerHTML = IMAGES[item.getData().operation.name]
+      image.insertAdjacentHTML('beforeend', IMAGES[item.getData().operation.name])
       image.setAttribute(
         'transform',
         `translate(${x + IMAGE_SHIFT}, ${y + IMAGE_SHIFT}) scale(${IMAGE_SCALE})`
@@ -322,16 +664,31 @@ export default {
       group.appendChild(image)
       return group
     },
-    updateTransform() {
+    /**
+     * Events.
+     */
+    onTransform() {
       if (this.treemapSVG) {
         this.treemapSVG.style.transform = `translate(${this.treemapPanX}px, ${this.treemapPanY}px) scale(${this.treemapScale})`
       }
     },
     onWheel(event) {
       event.preventDefault()
-      this.treemapScale += event.deltaY < 0 ? ZOOM_FACTOR : -ZOOM_FACTOR
+
+      this.onZoom(event)
+    },
+    onZoom(event) {
+      const zoomFactor = event.deltaY ? (event.deltaY < 0 ? 1 : -1) : event
+      this.treemapScale += zoomFactor * ZOOM_FACTOR
       this.treemapScale = Math.max(MIN_ZOOM, Math.min(this.treemapScale, MAX_ZOOM)) // Zoom limit.
-      this.updateTransform()
+      this.getCalibration(true, true)
+      this.onTransform()
+    },
+    onResetZoom() {
+      this.treemapScale = MIN_ZOOM
+
+      this.getCalibration(true, false)
+      this.onTransform()
     },
     onMouseDown(event) {
       this.treemapIsPanning = true
@@ -342,7 +699,7 @@ export default {
       if (!this.treemapIsPanning) return
       this.treemapPanX = event.clientX - this.treemapStartX
       this.treemapPanY = event.clientY - this.treemapStartY
-      this.updateTransform()
+      this.onTransform()
     },
     onMouseUp() {
       this.treemapIsPanning = false
@@ -350,39 +707,101 @@ export default {
     onMouseLeave() {
       this.treemapIsPanning = false
     },
-    showToolTip(event, item) {
+    onShowToolTip(event, data) {
       this.toolTipVisibility = true
-      this.updateToolTipPosition(event)
-      this.updateToolTipText(item)
+
+      this.onToolTipPositionChanged(event)
+      this.onToolTipHtmlChanged(this.getToolTipHtml(data))
     },
-    moveToolTip(event, item) {
-      this.updateToolTipPosition(event)
-      this.updateToolTipText(item)
+    onMoveToolTip(event, data) {
+      this.onToolTipPositionChanged(event)
+      this.onToolTipHtmlChanged(this.getToolTipHtml(data))
     },
-    hideToolTip() {
+    onHideToolTip() {
       this.toolTipVisibility = false
     },
-    updateToolTipPosition(event) {
+    onToolTipPositionChanged(event) {
       this.toolTipX = event.pageX + 10
       this.toolTipY = event.pageY + 10
     },
-    updateToolTipText(item) {
-      let text = ''
-      if (item.getData() !== undefined) {
-        text += '<span>' + item.getData().location + '</span>'
+    onToolTipHtmlChanged(html) {
+      this.toolTipHtml = html
+    },
+    onTechnologyColorSelected(technologyId, color) {
+      this.treemapObject = this.dataMapper.colorTreemap(this.treemapObject, (item) => {
+        if (item.type === 'codeFragment' && item.getData().technology.id === technologyId) {
+          item.color = color
+        }
+        return item
+      })
+      this.renderTreemap()
+    },
+    onOperationColorSelected(operationName, color) {
+      this.treemapObject = this.dataMapper.colorTreemap(this.treemapObject, (item) => {
+        if (item.getType() === 'codeFragment' && item.getData().operation.name === operationName) {
+          item.setColor(color)
+        }
+        return item
+      })
+      this.renderTreemap()
+    },
+    onUnselectConcept(concept) {
+      this.conceptsSelected = this.conceptsSelected.filter((c) => c !== concept)
+    },
+    onFilterCodeFragments() {
+      this.$emit(
+        'onFilterCodeFragments',
+        this.locationSelected,
+        this.technologySelected,
+        this.operationSelected,
+        this.methodSelected,
+        this.conceptsSelected
+      )
+    },
+    onHighlight(filteredCodeFragments) {
+      if (filteredCodeFragments && filteredCodeFragments.length > 0) {
+        const locationsSet = new Set(filteredCodeFragments.map((cf) => cf.location))
+        const opacify = (item) => {
+          if (item.getType() === 'codeFragment') {
+            const hasMatch = locationsSet.has(item.getData().location)
+            item.setOpacity(hasMatch ? NO_OPAQUE : OPAQUE)
+          }
+          return item
+        }
+        this.treemapObject = this.dataMapper.colorTreemap(this.treemapObject, (item) =>
+          opacify(item)
+        )
+        this.renderTreemap()
+      }
+    },
+    toggleSettings() {
+      this.settingsVisibility = !this.settingsVisibility
+    },
+    toggleMetrics() {
+      this.metricsVisibility = !this.metricsVisibility
+    },
+    /**
+     * Utils.
+     */
+    getToolTipHtml(data) {
+      let html = ''
+      if (data.getData() !== undefined) {
+        if (data.getData().location !== undefined) {
+          html += '<span :data-text="text">' + data.getData().location + '</span>'
+        }
         if (
-          item.getData().technology &&
-          item.getData().operation &&
-          item.getData().method &&
-          item.getData().sample
+          data.getData().technology &&
+          data.getData().operation &&
+          data.getData().method &&
+          data.getData().sample
         ) {
-          text += '<span>' + item.getData().technology.id + '</span>'
-          text += '<span>' + item.getData().operation.name + '</span>'
-          text += '<span>' + item.getData().method.name + '</span>'
-          text += '<span>' + item.getData().sample.content + '</span>'
-          text +=
+          html += '<span>' + data.getData().technology.id + '</span>'
+          html += '<span>' + data.getData().operation.name + '</span>'
+          html += '<span>' + data.getData().method.name + '</span>'
+          html += '<span>' + data.getData().sample.content + '</span>'
+          html +=
             '<span>' +
-            item
+            data
               .getData()
               .concepts.reduce((acc, item) => {
                 acc.push(item.name)
@@ -392,47 +811,23 @@ export default {
             '</span>'
         }
       }
-      this.toolTipText = text
+      return html
     },
-    toggleSettings() {
-      this.settingsVisibility = !this.settingsVisibility
-    },
-    onTechnologyColorSelected(technologyId, color) {
-      let coloredModel = this.dataMapper.colorTreemap(this.treemapObject, (item) => {
-        if (item.type === 'codeFragment' && item.getData().technology.id === technologyId) {
-          item.color = color
-        }
-        return item
-      })
-      this.treemapObject = coloredModel
-      this.renderTreemap()
-    },
-    onOperationColorSelected(operationName, color) {
-      let coloredModel = this.dataMapper.colorTreemap(this.treemapObject, (item) => {
-        if (item.getType() === 'codeFragment' && item.getData().operation.name === operationName) {
-          item.setColor(color)
-        }
-        return item
-      })
-      this.treemapObject = coloredModel
-      this.renderTreemap()
-    },
-    onConceptSelected(conceptName) {
-      let opacedModel = this.dataMapper.colorTreemap(this.treemapObject, (item) => {
-        if (item.getType() === 'codeFragment') {
-          if (
-            conceptName.length !== 0 && // If one concept is selected ...
-            item.getData().concepts.filter((concept) => concept.name === conceptName).length === 0 // ... and of that item does not contain the selected one.
-          ) {
-            item.setOpacity(OPAQUE) // Set the opacity.
-          } else {
-            item.setOpacity(NO_OPAQUE) // Unset the opacity if no concept is selected.
-          }
-        }
-        return item
-      })
-      this.treemapObject = opacedModel
-      this.renderTreemap()
+    getCalibration(isHorizontal, isVertical) {
+      if (isHorizontal) {
+        let treemapDivMiddleShiftX = this.treemapDiv.offsetWidth / 2
+        let treemapSVGMiddleShiftX = (this.treemapObject.getWidth() / 2) * this.treemapScale
+        this.treemapPanX = treemapDivMiddleShiftX - treemapSVGMiddleShiftX // Margin left
+      } else {
+        this.treemapPanX = 10
+      }
+      if (isVertical) {
+        let treemapDivMiddleShiftY = this.treemapDiv.offsetHeight / 2
+        let treemapSVGMiddleShiftY = (this.treemapObject.getHeight() / 2) * this.treemapScale
+        this.treemapPanY = treemapDivMiddleShiftY - treemapSVGMiddleShiftY // Margin top
+      } else {
+        this.treemapPanY = 10
+      }
     }
   }
 }
@@ -442,7 +837,7 @@ export default {
   <!-- Settings -->
   <div class="container">
     <button class="btn btn-light settings-button" type="button" @click="toggleSettings">
-      <i class="bi bi-gear-fill"></i>
+      <i :class="settingsVisibility ? 'bi-gear-fill' : 'bi-gear'"></i>
     </button>
     <div :class="['settings', { 'd-none': !settingsVisibility }]">
       <div class="sub-settings">
@@ -450,7 +845,7 @@ export default {
           <span>
             <ColorSlider
               :label="technology"
-              @updateColor="onTechnologyColorSelected(technology, $event)"
+              @onColor="onTechnologyColorSelected(technology, $event)"
             />
           </span>
         </div>
@@ -461,109 +856,157 @@ export default {
           <span>
             <ColorSlider
               :label="operation"
-              @updateColor="onOperationColorSelected(operation, $event)"
+              @onColor="onOperationColorSelected(operation, $event)"
             />
           </span>
         </div>
       </div>
       <hr class="line" />
-      <div v-if="conceptsList.length > 0" class="sub-settings">
-        <span>Concept: </span><br />
-        <select @change="onConceptSelected($event.target.value)" class="form-control">
-          <option value=""></option>
-          <option v-for="(item, index) in conceptsList" :key="index" :value="item">
-            {{ item }}
-          </option>
-        </select>
+      <div class="sub-settings multiselects">
+        <Multiselect
+          v-model="technologySelected"
+          :options="technologiesList"
+          searchable
+          :placeholder="SELECT_TECHNOLOGY"
+          class="form-control settings-select"
+        ></Multiselect>
+        <Multiselect
+          v-model="operationSelected"
+          :options="operationsList"
+          searchable
+          :placeholder="SELECT_OPERATION"
+          class="form-control settings-select left"
+        ></Multiselect>
+        <Multiselect
+          v-model="locationSelected"
+          :options="locationsList"
+          label="label"
+          track-by="value"
+          searchable
+          :placeholder="SELECT_LOCATION"
+          class="form-control settings-select left"
+        ></Multiselect>
+        <Multiselect
+          v-model="methodSelected"
+          :options="methodsList"
+          searchable
+          :placeholder="SELECT_METHOD"
+          class="form-control settings-select left"
+        ></Multiselect>
+        <Multiselect
+          v-model="conceptsSelected"
+          :options="conceptsList"
+          mode="multiple"
+          :searchable="true"
+          :hide-selected="false"
+          :can-clear="false"
+          :can-deselect="true"
+          :close-on-select="false"
+          :object="false"
+          :placeholder="SELECT_CONCEPTS"
+          class="form-control settings-select left"
+        >
+          <template #multiplelabel="{ values }">
+            <div class="multiselect-multiple-label">
+              <span
+                v-for="v in values.slice().reverse()"
+                :key="v.value"
+                class="selected-span clickable-tag"
+                @click.stop="onUnselectConcept(v.value)"
+              >
+                {{ v.value }} ✕
+              </span>
+            </div>
+          </template>
+        </Multiselect>
+        <button
+          class="btn btn-light form-control left thin-button"
+          type="button"
+          @click="onFilterCodeFragments"
+        >
+          <i class="bi bi-funnel"></i>
+        </button>
       </div>
     </div>
+    <!-- Metrics -->
+    <button class="btn btn-light settings-button top" type="button" @click="toggleMetrics">
+      <i :class="metricsVisibility ? 'bi-bar-chart-fill' : 'bi-bar-chart'"></i>
+    </button>
+    <div v-show="metricsVisibility">
+      <!-- Filtering -->
+      <div class="metrics top">
+        <div class="metrics-header">{{ FILTERING }}</div>
+        <div class="metrics-content">
+          <div class="item" v-if="filteredCodeFragmentsList.length !== 0">
+            <span class="item-name">{{ CODE_FRAGMENTS_NUMBER }}: </span>
+            <span class="item-count">{{ filteredCodeFragmentsList.length }}</span>
+          </div>
+          <div v-if="filteredCodeFragmentsList.length === 0">
+            <span>{{ NO_DATA }}</span>
+          </div>
+        </div>
+      </div>
+      <!-- Figures -->
+      <div class="metrics top">
+        <div class="metrics-header">{{ METRICS }}</div>
+        <div class="metrics-values">
+          <span class="metrics-value">
+            {{ DIRECTORIES_NUMBER }}:
+            {{ new Intl.NumberFormat().format(directoriesNumberValue) }}
+          </span>
+          <span class="metrics-value">
+            {{ FILES_NUMBER }}: {{ new Intl.NumberFormat().format(filesNumberValue) }}
+          </span>
+          <span class="metrics-value">
+            {{ CODE_FRAGMENTS_NUMBER }}:
+            {{ new Intl.NumberFormat().format(codeFragmentsNumberValue) }}
+          </span>
+          <span class="metrics-value">
+            {{ CONCEPTS_NUMBER }}: {{ new Intl.NumberFormat().format(conceptsNumberValue) }}
+          </span>
+          <span class="metrics-value">
+            {{ LOC }}: {{ new Intl.NumberFormat().format(locValue) }}
+          </span>
+        </div>
+      </div>
+      <!-- Concept similarity coupling -->
+      <div class="metrics top">
+        <ConceptsMatrix :title="TOP_10_CONCEPT_CO_OCCURRENCE" :data="conceptsMatrixObject" />
+      </div>
+      <!-- Operations technologies breakdown -->
+      <div class="metrics top">
+        <TwoDimensionsBreakdownComponent
+          v-if="operationsTechnologiesBreakdown"
+          :title="STATIC + ' ' + TECHNOLOGIES_OPERATIONS_BREAKDOWN"
+          :data="operationsTechnologiesBreakdownObject.static"
+        />
+      </div>
+      <!-- Concept evolutionary coupling -->
+      <div class="metrics top">
+        <OneDimensionBreakdownComponent title="Concepts" :data="conceptsBreakdownObject" />
+      </div>
+      <div class="metrics top">
+        <OneDimensionBreakdownComponent title="TIR" :data="tirObject" show-percentages="false" />
+      </div>
+      <div class="metrics top">
+        <OneDimensionBreakdownComponent title="CIR" :data="cirObject" show-percentages="false" />
+      </div>
+    </div>
+    <!-- Zoom controls -->
+    <ZoomControls @onZoom="onZoom" @onResetZoom="onResetZoom" class="top" />
+    <!-- Treemap -->
+    <div
+      ref="treemap"
+      class="treemap top"
+      @wheel="onWheel"
+      @mousedown="onMouseDown"
+      @mousemove="onMouseMove"
+      @mouseup="onMouseUp"
+      @mouseleave="onMouseLeave"
+    ></div>
   </div>
-  <br />
-  <!-- Treemap -->
-  <div
-    ref="treemap"
-    class="treemap"
-    @wheel="onWheel"
-    @mousedown="onMouseDown"
-    @mousemove="onMouseMove"
-    @mouseup="onMouseUp"
-    @mouseleave="onMouseLeave"
-  ></div>
-  <!-- Tooltip -->
-  <div
-    class="toolTip"
-    v-if="toolTipVisibility"
-    :style="{ left: toolTipX + 'px', top: toolTipY + 'px' }"
-    v-html="toolTipText"
-  ></div>
+  <!-- Tool tip -->
+  <div v-if="toolTipVisibility">
+    <ToolTip :html="toolTipHtml" :style="{ left: toolTipX + 'px', top: toolTipY + 'px' }" />
+  </div>
 </template>
-
-<style>
-/* Settings */
-
-.settings {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 20px;
-}
-
-.settings div {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.settings div span {
-  margin: 5px;
-}
-
-.settings-button {
-  width: 100%;
-}
-
-/* Treemap */
-
-.treemap {
-  position: relative;
-  width: 100%;
-  height: 1000px;
-  overflow: hidden;
-  cursor: grab;
-  border: 1px solid #d3d4d5;
-  border-radius: 0.375rem;
-}
-
-.hovered {
-  stroke: black;
-  stroke-width: 1px;
-  cursor: pointer;
-}
-
-.clicked {
-  outline: 2px solid rgb(0, 0, 0);
-  outline-offset: 3px;
-  border-radius: 0px;
-}
-
-/* Tooltip */
-
-.toolTip {
-  position: absolute;
-  background: rgb(255, 255, 255);
-  color: black;
-  padding: 10px;
-  border-radius: 0px;
-  pointer-events: none;
-  font-size: 10pt;
-  text-align: left;
-  padding: 0;
-  margin: 0;
-}
-
-.toolTip span {
-  display: block;
-  padding: 5px;
-  border: 1px solid #f8f9fa;
-}
-</style>

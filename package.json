@@ -1,6 +1,6 @@
 {
-  "name": "denim",
-  "version": "0.0.1",
+  "name": "denim-web",
+  "version": "2.0.0",
   "description": "This application enables to reverse engineer, visualize, model, and evolve a microservices architecture from a data perspective.",
   "type": "module",
   "scripts": {
@@ -9,9 +9,9 @@
     "start_dev": "vite",
     "test_unit": "npx vitest --run --coverage",
     "test_unit_dev": "npx vitest",
-    "test_integration_ui": "start-server-and-test start http://localhost:4173 'cypress run --e2e --headed'",
+    "test_integration_ui": "start-server-and-test start http://localhost:4173 'cypress run --e2e'",
     "test_integration_ui_dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
-    "test_unit_ui": "cypress run --component --headed",
+    "test_unit_ui": "cypress run --component",
     "test_unit_ui_dev": "cypress open --component",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
@@ -22,16 +22,21 @@
   },
   "keywords": [
     "microservice",
+    "data",
+    "downloading",
     "reverse engineering",
-    "modeling",
-    "visualization",
-    "evolution",
-    "data"
+    "visualizing",
+    "evolving"
   ],
   "author": "Maxime ANDRÉ",
+  "contributors": [
+    "Maxime DE RYCKE"
+  ],
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.8.4",
+    "@vueform/multiselect": "^2.6.11",
+    "@vuepic/vue-datepicker": "^11.0.2",
+    "axios": "^1.15.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "pinia": "^2.2.4",

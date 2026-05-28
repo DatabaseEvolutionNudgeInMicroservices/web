@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolution of Operations Types Distribution in Overleaf</title>
+
+  <script src="https://cdn.plot.ly/plotly-3.5.1.min.js"></script>
+</head>
+
+<body>
+<div id="chart"></div>
+
+<script>
+  const dates = ['August 5th, 2021', 'February 7th, 2022', 'August 5th, 2022', 'February 6th, 2023', 'August 8th, 2023', 'February 5th, 2024', 'August 5th, 2024', 'February 5th, 2025', 'August 5th, 2025', 'February 5th, 2026']
+
+  const operationColors = {
+    CREATE: '#2ecc71',
+    READ: '#29b6f6',
+    UPDATE: '#ffa726',
+    DELETE: '#ef5350',
+    OTHER: '#616161'
+  }
+
+  function createTrace(group, operation, values) {
+    return {
+      x: dates,
+      y: values,
+
+      name: `${operation}`,
+
+      type: 'bar',
+
+      offsetgroup: group,
+      legendgroup: operation,
+
+      marker: {
+        color: operationColors[operation],
+        line: {
+          color: '#fff',
+          width: 1
+        }
+      }
+    }
+  }
+
+  const data = [
+    createTrace('All', 'OTHER', [(61 / 1398) * 100, (61 / 1476) * 100, (59 / 1596) * 100, (69 / 1913) * 100, (69 / 1949) * 100, (59 / 1931) * 100, (69 / 2012) * 100, (69 / 2223) * 100, (72 / 2487) * 100, (72 / 2592) * 100]),
+    createTrace('All', 'CREATE', [(405 / 1398) * 100, (403 / 1476) * 100, (446 / 1596) * 100, (497 / 1913) * 100, (485 / 1949) * 100, (471 / 1931) * 100, (482 / 2012) * 100, (534 / 2223) * 100, (576 / 2487) * 100, (605 / 2592) * 100]),
+    createTrace('All', 'READ', [(659 / 1398) * 100, (721 / 1476) * 100, (765 / 1596) * 100, (933 / 1913) * 100, (938 / 1949) * 100, (902 / 1931) * 100, (956 / 2012) * 100, (1070 / 2223) * 100, (1237 / 2487) * 100, (1290 / 2592) * 100]),
+    createTrace('All', 'UPDATE', [(154 / 1398) * 100, (169 / 1476) * 100, (199 / 1596) * 100, (250 / 1913) * 100, (283 / 1949) * 100, (320 / 1931) * 100, (319 / 2012) * 100, (359 / 2223) * 100, (402 / 2487) * 100, (423 / 2592) * 100]),
+    createTrace('All', 'DELETE', [(119 / 1398) * 100, (122 / 1476) * 100, (127 / 1596) * 100, (164 / 1913) * 100, (174 / 1949) * 100, (179 / 1931) * 100, (186 / 2012) * 100, (191 / 2223) * 100, (200 / 2487) * 100, (202 / 2592) * 100])
+    //	Total amount of code fragments:	 1398   			1476				1596				1913				1949				1931				2012				2223				2487				2592
+  ]
+
+  const layout = {
+
+    width: 500,
+    height: 500,
+    margin: {
+      b: 150
+    },
+
+    title: 'Evolution of Operations Types Distribution in Overleaf',
+
+    barmode: 'stack',
+
+    plot_bgcolor: '#ffffff',
+    paper_bgcolor: '#ffffff',
+
+    xaxis: {
+      title: { text: '' },
+      gridcolor: '#e0e0e0'
+    },
+
+    yaxis: {
+      title: { text: '% Operations' },
+      gridcolor: '#e0e0e0'
+    },
+
+    legend: {
+      orientation: 'v'
+    },
+
+    showlegend: true,
+
+    font: {
+      family: 'Arial, sans-serif',
+      size: 14,
+      color: '#212121'
+    }
+  }
+
+  Plotly.newPlot('chart', data, layout)
+</script>
+</body>
+</html>
