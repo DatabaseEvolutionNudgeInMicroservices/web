@@ -1,6 +1,6 @@
 {
   "name": "denim-web",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "This application enables to reverse engineer, visualize, model, and evolve a microservices architecture from a data perspective.",
   "type": "module",
   "scripts": {

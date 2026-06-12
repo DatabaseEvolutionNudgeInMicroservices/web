@@ -12,7 +12,7 @@
       }
 
       .plot {
-          height: 300px;
+          height: 250px;
       }
 
       .graph-container {
@@ -24,12 +24,13 @@
           text-align: center;
           font-size: 14px;
           color: #000;
+		  font-weight: bold;
       }
 
       #charts {
           display: flex;
           flex-direction: column;
-          gap: 5px;
+          gap: 0px;
       }
   </style>
 </head>
@@ -42,21 +43,25 @@
 
   /* Constants */
 
-  const nodeIds = ['project', 'user', 'doc', 'message', 'doc history', 'message', 'history', 'version', '']
+  const nodeIds = ['project', 'user', 'doc', 'message', 'doc history', 'history', 'version', '']
 
   /* Colors */
 
-  function generateRandomColors() {
-    const r = Math.floor(Math.random() * 256)
-    const g = Math.floor(Math.random() * 256)
-    const b = Math.floor(Math.random() * 256)
-    return `rgb(${r}, ${g}, ${b})`
-  }
+  const palette = [
+	  '#00ffac', // project
+	  '#7233b2', // user
+	  '#ff829b', // doc
+	  '#00a5ef', // message
+	  '#ff4d3e', // doc history
+	  '#ffc53b', // history
+	  '#000000' // version
+	]
 
-  const colorMap = {}
-  nodeIds.forEach(id => {
-    colorMap[id] = generateRandomColors()
-  })
+	const colorMap = {}
+
+	nodeIds.forEach((id, index) => {
+	  colorMap[id] = palette[index % palette.length]
+	})
 
   /* Layout */
 
@@ -82,11 +87,11 @@
     {
       date: 'August 5th 2021',
       nodes: [
-        { id: 'project', size: 38.2 },
-        { id: 'user', size: 19.3 },
-        { id: 'doc', size: 14.2 },
-        { id: 'message', size: 4.4 },
-        { id: 'doc history', size: 3.5 },
+        { id: 'project', size: 38.2, textposition: 'center right' },
+        { id: 'user', size: 19.3, textposition: 'top right' },
+        { id: 'doc', size: 14.2, textposition: 'top right' },
+        { id: 'message', size: 4.4, textposition: 'top left' },
+        { id: 'doc history', size: 3.5, textposition: 'top right' },
       ],
       edges: [
         { source: 'project', target: 'user', weight: 1.8 },
@@ -98,27 +103,27 @@
     {
       date: 'February 7th 2022',
       nodes: [
-        { id: 'project', size: 39.3 },
-        { id: 'user', size: 20 },
-        { id: 'doc', size: 14.8 },
-        { id: 'doc history', size: 4 },
-        { id: 'message', size: 3.9 },
+        { id: 'project', size: 39.3, textposition: 'center right' },
+        { id: 'user', size: 20, textposition: 'top right' },
+        { id: 'doc', size: 14.8 , textposition: 'top right'},
+        { id: 'doc history', size: 4, textposition: 'top right' },
+        { id: 'message', size: 3.9, textposition: 'top left' },
       ],
       edges: [
-        { source: 'project', target: 'user', weight: 1.8 },
-        { source: 'project', target: 'doc', weight: 8.2 },
-        { source: 'project', target: 'message', weight: 1.5 },
-        { source: 'user', target: 'doc', weight: 0.1 },
+        { source: 'project', target: 'user', weight: 1.8, textposition: 'top right' },
+        { source: 'project', target: 'doc', weight: 8.2, textposition: 'top right' },
+        { source: 'project', target: 'message', weight: 1.5, textposition: 'top right' },
+        { source: 'user', target: 'doc', weight: 0.1, textposition: 'top right' },
       ]
     },
     {
       date: 'August 5th 2022',
       nodes: [
-        { id: 'project', size: 41.2 },
-        { id: 'user', size: 27.7 },
-        { id: 'doc', size: 15.3 },
-        { id: 'message', size: 4.2 },
-        { id: 'doc history', size: 4 },
+        { id: 'project', size: 41.2, textposition: 'center right' },
+        { id: 'user', size: 27.7, textposition: 'top right' },
+        { id: 'doc', size: 15.3, textposition: 'top right' },
+        { id: 'message', size: 4.2, textposition: 'top left' },
+        { id: 'doc history', size: 4, textposition: 'top right' },
       ],
       edges: [
         { source: 'project', target: 'user', weight: 1.8 },
@@ -130,11 +135,11 @@
     {
       date: 'February 6th 2023',
       nodes: [
-        { id: 'project', size: 59.2 },
-        { id: 'user', size: 25.8 },
-        { id: 'doc', size: 15.3 },
-        { id: 'history', size: 5.5 },
-        { id: 'version', size: 4.5 },
+        { id: 'project', size: 59.2, textposition: 'center right' },
+        { id: 'user', size: 25.8, textposition: 'top right' },
+        { id: 'doc', size: 15.3, textposition: 'top right' },
+        { id: 'history', size: 5.5, textposition: 'bottom left' },
+        { id: 'version', size: 4.5, textposition: 'bottom left' },
       ],
       edges: [
         { source: 'project', target: 'user', weight: 2.5 },
@@ -148,11 +153,11 @@
     {
       date: 'August 8th 2023',
       nodes: [
-        { id: 'project', size: 57.1 },
-        { id: 'user', size: 25.2 },
-        { id: 'doc', size: 15.5 },
-        { id: 'history', size: 5.5 },
-        { id: 'version', size: 4.5 },
+        { id: 'project', size: 57.1, textposition: 'center right' },
+        { id: 'user', size: 25.2, textposition: 'top right' },
+        { id: 'doc', size: 15.5, textposition: 'top right' },
+        { id: 'history', size: 5.5, textposition: 'bottom left' },
+        { id: 'version', size: 4.5, textposition: 'bottom left' },
       ],
       edges: [
         { source: 'project', target: 'user', weight: 2.5 },
@@ -161,16 +166,17 @@
         { source: 'project', target: 'version', weight: 4.4 },
         { source: 'user', target: 'doc', weight: 0.1 },
         { source: 'version', target: 'doc', weight: 0.3 },
+        { source: 'version', target: 'history', weight: 3 },
       ]
     },
     {
       date: 'February 5th 2024',
       nodes: [
-        { id: 'project', size: 56.4 },
-        { id: 'user', size: 25.9 },
-        { id: 'doc', size: 14.1 },
-        { id: 'history', size: 5.5 },
-        { id: 'version', size: 4.5 },
+        { id: 'project', size: 56.4, textposition: 'center right' },
+        { id: 'user', size: 25.9, textposition: 'top right' },
+        { id: 'doc', size: 14.1, textposition: 'top right' },
+        { id: 'history', size: 5.5, textposition: 'bottom left' },
+        { id: 'version', size: 4.5, textposition: 'bottom left' },
       ],
       edges: [
         { source: 'project', target: 'user', weight: 2.5 },
@@ -184,11 +190,11 @@
     {
       date: 'August 5th 2024',
       nodes: [
-        { id: 'project', size: 56.9 },
-        { id: 'user', size: 26.2 },
-        { id: 'doc', size: 14.7 },
-        { id: 'history', size: 5.4 },
-        { id: 'version', size: 4.6 },
+        { id: 'project', size: 56.9, textposition: 'center right' },
+        { id: 'user', size: 26.2, textposition: 'top right' },
+        { id: 'doc', size: 14.7, textposition: 'top right' },
+        { id: 'history', size: 5.4, textposition: 'bottom left' },
+        { id: 'version', size: 4.6, textposition: 'bottom left' },
       ],
       edges: [
         { source: 'project', target: 'user', weight: 2.5 },
@@ -202,11 +208,11 @@
     {
       date: 'February 5th 2025',
       nodes: [
-        { id: 'project', size: 66.3 },
-        { id: 'user', size: 28.8 },
-        { id: 'doc', size: 15.2 },
-        { id: 'history', size: 6.7 },
-        { id: 'version', size: 4.8 },
+        { id: 'project', size: 66.3, textposition: 'center right' },
+        { id: 'user', size: 28.8, textposition: 'top right' },
+        { id: 'doc', size: 15.2, textposition: 'top right' },
+        { id: 'history', size: 6.7, textposition: 'bottom left' },
+        { id: 'version', size: 4.8, textposition: 'bottom left' },
       ],
       edges: [
         { source: 'project', target: 'user', weight: 2.1 },
@@ -220,11 +226,11 @@
     {
       date: 'August 5th 2025',
       nodes: [
-        { id: 'project', size: 71.4 },
-        { id: 'user', size: 33.1 },
-        { id: 'doc', size: 15.9 },
-        { id: 'history', size: 6.9 },
-        { id: 'version', size: 4.8 },
+        { id: 'project', size: 71.4, textposition: 'center right' },
+        { id: 'user', size: 33.1, textposition: 'top right' },
+        { id: 'doc', size: 15.9, textposition: 'top right' },
+        { id: 'history', size: 6.9, textposition: 'bottom left' },
+        { id: 'version', size: 4.8, textposition: 'bottom left' },
       ],
       edges: [
         { source: 'project', target: 'user', weight: 2 },
@@ -238,11 +244,11 @@
     {
       date: 'February 5th 2026',
       nodes: [
-        { id: 'project', size: 75.5 },
-        { id: 'user', size: 31.4 },
-        { id: 'doc', size: 17.5 },
-        { id: 'history', size: 7.9 },
-        { id: 'version', size: 5.4 },
+        { id: 'project', size: 75.5, textposition: 'center right' },
+        { id: 'user', size: 31.4, textposition: 'top right' },
+        { id: 'doc', size: 17.5, textposition: 'top right' },
+        { id: 'history', size: 7.9, textposition: 'bottom left' },
+        { id: 'version', size: 5.4, textposition: 'bottom left' },
       ],
       edges: [
         { source: 'project', target: 'user', weight: 1.9 },
@@ -315,7 +321,7 @@
       x: graph.nodes.map(n => n.x),
       y: graph.nodes.map(n => n.y),
       text: graph.nodes.map(n => n.id),
-      textposition: 'top center',
+      textposition: graph.nodes.map(n => n.textposition),
       marker: {
         size: graph.nodes.map(n => n.size),
         color: graph.nodes.map(

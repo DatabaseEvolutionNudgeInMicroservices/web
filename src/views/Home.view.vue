@@ -199,6 +199,9 @@ export default {
             <a href="https://www.usi.ch/en" target="_blank">
               <img src="/src/assets/img/usi.png" alt="Università della Svizzera italiana" />
             </a>
+            <a href="https://www.unisannio.it/en" target="_blank">
+              <img src="/src/assets/img/unisannio.png" alt="Università degli Studi del Sannio" />
+            </a>
             <a href="https://www.federation-wallonie-bruxelles.be/" target="_blank"
               ><img src="/src/assets/img/fwb.jpg" alt="Fédération Wallonie-Bruxelles"
             /></a>
